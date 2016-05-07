@@ -1,0 +1,46 @@
+﻿<h2>Game accounts</h2>
+
+<!--
+<h5>Game platform list</h5>
+<div *ngIf="gamePlatforms">
+    <div *ngFor="let gamePlatform of gamePlatforms">
+        {{gamePlatform.Id}} - {{gamePlatform.Name}} = {{gamePlatform.Url}}
+    </div>
+</div>
+-->
+
+<h5>Game accounts</h5>
+
+<div class="row">
+    <div class="col-xs-6 col-md-3" *ngFor="let gameAccount of userProfileGameAccounts" [class.selected]="gameAccount === selectedGameAccount">
+        <div *ngFor="let gamePlatform of gamePlatforms">
+            <div *ngIf="gamePlatform.Id == gameAccount.GamePlatformId">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <strong>{{gamePlatform.Name}}</strong>
+                        <p>{{gameAccount.UserName}}</p>
+                        <p><a class="btn btn-default" role="button" (click)="selectGameAccount(gameAccount)">Edit</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6 col-md-3">
+        <div>
+            <div>
+                <div class="thumbnail">
+                    <div class="caption">
+                        <div [hidden]="!isAddingAccount">
+                            <add-game-account-form></add-game-account-form>
+                        </div>
+                        <div [hidden]="isAddingAccount">
+                            <p><a class="btn btn-default" role="button" (click)="addGameAccount()">Add new account</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<game-account [gameAccount]="selectedGameAccount"></game-account>

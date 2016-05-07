@@ -1,0 +1,9 @@
+﻿{
+  "AppSettings": {
+    "SiteTitle": "Site name"
+  },
+  "Urls": {
+    "API": "API url",
+    "UI": "UI url"
+  }
+}

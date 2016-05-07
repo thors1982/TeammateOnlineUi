@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B89203E2-754E-4235-B3E7-0464AB3F9672}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6A616D0B-E730-4226-A906-5D238CAE70F2}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TeammateOnlineUi", "src\TeammateOnlineUi\TeammateOnlineUi.xproj", "{D3798451-F5A6-4BB7-8A07-BC5DFE6BBAFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3798451-F5A6-4BB7-8A07-BC5DFE6BBAFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3798451-F5A6-4BB7-8A07-BC5DFE6BBAFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3798451-F5A6-4BB7-8A07-BC5DFE6BBAFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3798451-F5A6-4BB7-8A07-BC5DFE6BBAFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D3798451-F5A6-4BB7-8A07-BC5DFE6BBAFF} = {B89203E2-754E-4235-B3E7-0464AB3F9672}
+	EndGlobalSection
+EndGlobal

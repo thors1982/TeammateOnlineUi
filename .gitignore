@@ -301,3 +301,17 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+
+
+# Configs
+# =========================
+src/TeammateOnlineUi/config.Development.json
+
+# Typescript compiled code in the www root
+# =========================
+src/TeammateOnlineUi/wwwroot/app/
+
+# Our npm libraries in the www root
+# =========================
+src/TeammateOnlineUi/wwwroot/lib/
