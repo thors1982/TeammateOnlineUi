@@ -12,11 +12,16 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav">
-                <li class="active"><a [routerLink]="['Dashboard']">Dashboard</a></li>
-                <li *ngIf="!oidcManagerService.OidcManager.expired">
+                <li [class.active]="router.isRouteActive(router.generate(['Dashboard']))">
+                    <a [routerLink]="['Dashboard']">Dashboard</a>
+                </li>
+                <li *ngIf="!oidcManagerService.OidcManager.expired" [class.active]="router.isRouteActive(router.generate(['FriendsCollection']))">
+                    <a [routerLink]="['FriendsCollection']">Friends</a>
+                </li>
+                <li *ngIf="!oidcManagerService.OidcManager.expired" [class.active]="router.isRouteActive(router.generate(['GameAccountsCollection']))">
                     <a [routerLink]="['GameAccountsCollection']">Game accounts</a>
                 </li>
-                <li *ngIf="!oidcManagerService.OidcManager.expired">
+                <li *ngIf="!oidcManagerService.OidcManager.expired" [class.active]="router.isRouteActive(router.generate(['UserProfile']))">
                     <a [routerLink]="['UserProfile']">Profile</a>
                 </li>
             </ul>
@@ -28,13 +33,13 @@
             </form>
             <ul class="nav navbar-nav navbar-right" *ngIf="oidcManagerService.OidcManager">
                 <li *ngIf="!oidcManagerService.OidcManager.expired">
-                    <a (click)="logout()">Sign out</a>
+                    <a href="javascript:;" (click)="logout()">Sign out</a>
                 </li>
                 <li *ngIf="oidcManagerService.OidcManager.expired">
-                    <a (click)="loginWithGoogle()">Sign in with Google</a>
+                    <a href="javascript:;" (click)="loginWithGoogle()">Sign in with Google</a>
                 </li>
                 <li *ngIf="oidcManagerService.OidcManager.expired">
-                    <a (click)="loginWithFacebook()">Sign in with Facebook</a>
+                    <a href="javascript:;" (click)="loginWithFacebook()">Sign in with Facebook</a>
                 </li>
             </ul>
         </div>
