@@ -8,14 +8,14 @@ namespace TeammateOnlineUi
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; set; }
+        public IConfigurationRoot Configuration { get; }
 
-        public Startup(IHostingEnvironment hostingEnvironment)
+        public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
-                .SetBasePath(hostingEnvironment.ContentRootPath)
-                .AddJsonFile("config.json")
-                .AddJsonFile($"config.{hostingEnvironment.EnvironmentName}.json", optional: true)
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
