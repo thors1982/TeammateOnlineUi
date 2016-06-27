@@ -28,7 +28,7 @@ namespace TeammateOnlineUi.Middleware
 
         private static async Task ReturnIndexPage(HttpContext context)
         {
-            var file = new FileInfo(@"index.html");
+            var file = new FileInfo(@"wwwroot/index.html");
             byte[] buffer;
             if (file.Exists)
             {
