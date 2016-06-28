@@ -1,12 +1,12 @@
 ﻿<div *ngIf="gameAccount">
     <div *ngFor="let gamePlatform of gamePlatforms">
-        <div *ngIf="gamePlatform.Id == gameAccount.GamePlatformId">
+        <div *ngIf="gamePlatform.id == gameAccount.gamePlatformId">
             <form (ngSubmit)="gameAccountSave()" #gameAccountForm="ngForm">
-                <h2>{{gamePlatform.Name}} details!</h2>
-                <div><label>Id: </label>{{gameAccount.Id}}</div>
+                <h2>{{gamePlatform.name}} details!</h2>
+                <div><label>Id: </label>{{gameAccount.id}}</div>
                 <div class="form-group">
-                    <label for="UserName">User name: </label>
-                    <input class="form-control" required placeholder="User name" [(ngModel)]="gameAccount.UserName" ngControl="UserName" #name="ngForm" />
+                    <label for="userName">User name: </label>
+                    <input class="form-control" required placeholder="User name" [(ngModel)]="gameAccount.userName" ngControl="userName" #name="ngForm" />
                 </div>
 
                 <button type="submit" class="btn btn-default" [disabled]="!gameAccountForm.form.valid">Submit</button>

@@ -1,8 +1,8 @@
 ﻿export interface GameAccount {
-    Id: number;
-    UserProfileId: number;
-    GamePlatformId: number;
-    UserName: string;
-    CreatedDate: string;
-    ModifiedDate: string;
+    id: number;
+    userProfileId: number;
+    gamePlatformId: number;
+    userName: string;
+    createdDate: string;
+    modifiedDate: string;
 }

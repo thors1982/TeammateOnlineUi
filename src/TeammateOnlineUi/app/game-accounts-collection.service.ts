@@ -20,7 +20,7 @@ export class GameAccountsCollectionService {
     public createGameAccount(userId: string, gameAccount: GameAccount) {
         let apiUrl = this.baseApiUrl + userId + '/GameAccounts';
 
-        gameAccount.UserProfileId = +userId;
+        gameAccount.userProfileId = +userId;
 
         return this.httpClient.post(apiUrl, gameAccount);
     }
