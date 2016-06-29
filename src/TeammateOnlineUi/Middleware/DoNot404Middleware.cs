@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -30,7 +28,7 @@ namespace TeammateOnlineUi.Middleware
 
         private static async Task ReturnIndexPage(HttpContext context)
         {
-            var file = new FileInfo(@"index.html");
+            var file = new FileInfo(@"wwwroot/index.html");
             byte[] buffer;
             if (file.Exists)
             {

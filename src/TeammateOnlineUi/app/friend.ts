@@ -1,8 +1,7 @@
-﻿export interface GameAccount {
+﻿export interface Friend {
     id: number;
     userProfileId: number;
-    gamePlatformId: number;
-    userName: string;
+    friendUserProfileId: number;
     createdDate: string;
     modifiedDate: string;
 }

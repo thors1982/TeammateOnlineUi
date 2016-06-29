@@ -1,0 +1,12 @@
+﻿<h2>Friends</h2>
+
+<div class="row">
+    <div class="col-xs-6 col-md-3" *ngFor="let friend of friends" [class.selected]="friend === selectedFriend">
+        <div class="thumbnail">
+            <div class="caption">
+                <strong>{{friend.friendUserProfileId}}</strong>
+                <p>{{friend.friendUserProfileId}}</p>
+            </div>
+        </div>
+    </div>
+</div>

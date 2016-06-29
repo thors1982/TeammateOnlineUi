@@ -44,7 +44,7 @@ export class GameAccountComponent implements OnInit {
     }
 
     private updateGameAccount() {
-        this._gameAccountsCollectionService.updateAccount(this.oidcManagerService.OidcManager.profile.sub, this.gameAccount.Id.toString(), this.gameAccount);
+        this._gameAccountsCollectionService.updateAccount(this.oidcManagerService.OidcManager.profile.sub, this.gameAccount.id.toString(), this.gameAccount);
     }
 
     public gameAccountSave() {

@@ -4,7 +4,7 @@
 <h5>Game platform list</h5>
 <div *ngIf="gamePlatforms">
     <div *ngFor="let gamePlatform of gamePlatforms">
-        {{gamePlatform.Id}} - {{gamePlatform.Name}} = {{gamePlatform.Url}}
+        {{gamePlatform.id}} - {{gamePlatform.name}} = {{gamePlatform.url}}
     </div>
 </div>
 -->
@@ -14,11 +14,11 @@
 <div class="row">
     <div class="col-xs-6 col-md-3" *ngFor="let gameAccount of userProfileGameAccounts" [class.selected]="gameAccount === selectedGameAccount">
         <div *ngFor="let gamePlatform of gamePlatforms">
-            <div *ngIf="gamePlatform.Id == gameAccount.GamePlatformId">
+            <div *ngIf="gamePlatform.id == gameAccount.gamePlatformId">
                 <div class="thumbnail">
                     <div class="caption">
-                        <strong>{{gamePlatform.Name}}</strong>
-                        <p>{{gameAccount.UserName}}</p>
+                        <strong>{{gamePlatform.name}}</strong>
+                        <p>{{gameAccount.userName}}</p>
                         <p><a class="btn btn-default" role="button" (click)="selectGameAccount(gameAccount)">Edit</a></p>
                     </div>
                 </div>

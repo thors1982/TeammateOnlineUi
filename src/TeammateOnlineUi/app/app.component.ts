@@ -1,7 +1,8 @@
 ﻿import {Component, OnInit} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
+import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router} from 'angular2/router';
 
 import {DashboardComponent} from './dashboard.component';
+import {FriendsCollectionComponent} from './friends-collection.component';
 import {GameAccountsCollectionComponent} from './game-accounts-collection.component';
 import {GameAccountComponent} from './game-account.component';
 import {UserProfileComponent} from './user-profile.component';
@@ -26,6 +27,11 @@ import {HttpClientService} from './http-client.service';
             useAsDefault: true
         },
         {
+            path: '/friends',
+            name: 'FriendsCollection',
+            component: FriendsCollectionComponent,
+        },
+        {
             path: '/game-accounts',
             name: 'GameAccountsCollection',
             component: GameAccountsCollectionComponent
@@ -47,7 +53,7 @@ export class AppComponent implements OnInit {
     
     public OidcManager: any;
 
-    constructor(public oidcManagerService: OidcManagerService) { }
+    constructor(public oidcManagerService: OidcManagerService, public router: Router) { }
 
     public ngOnInit() {
         this.oidcManagerService.checkForOauthCallback();
