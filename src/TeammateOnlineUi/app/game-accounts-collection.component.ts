@@ -48,6 +48,10 @@ export class GameAccountsCollectionComponent implements OnInit {
             );
     }
 
+    private deleteGameAccount(gameAccount: GameAccount) {
+        this._gameAccountsCollectionService.deleteAccount(this.oidcManagerService.OidcManager.profile.sub, gameAccount.id);
+    }
+
     public ngOnInit() {
         this.isAddingAccount = false;
         this.getGamePlatforms();
@@ -58,6 +62,10 @@ export class GameAccountsCollectionComponent implements OnInit {
         this.selectedGameAccount = gameAccount;
     }
 
+    public removeGameAccount(gameAccount: GameAccount) {
+        this.deleteGameAccount(gameAccount);
+    }
+    
     public addGameAccount() {
         this.isAddingAccount = true;
     }

@@ -36,4 +36,10 @@ export class GameAccountsCollectionService {
 
         return this.httpClient.put(apiUrl, gameAccount);
     }
+
+    public deleteAccount(userId: string, gameAccountId: number) {
+        let apiUrl = this.baseApiUrl + userId + '/GameAccounts/' + String(gameAccountId));
+
+        return this.httpClient.delete(apiUrl);
+    }
 }
