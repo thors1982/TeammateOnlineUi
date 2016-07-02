@@ -1,23 +1,45 @@
-﻿<div class="container">
-    <div *ngIf="userProfile" [hidden]="submitted">
-        <form (ngSubmit)="profileSave()" #userProfileForm="ngForm">
-            <div class="form-group">
-                <label for="firstName">First name</label>
-                <input type="text" class="form-control" required [(ngModel)]="userProfile.firstName" ngControl="firstName" #name="ngForm">
-            </div>
-            <div class="form-group">
-                <label for="lastName">Last name</label>
-                <input type="text" class="form-control" required [(ngModel)]="userProfile.lastName" ngControl="lastName" #name="ngForm">
-            </div>
-            <div class="form-group">
-                <label for="emailAddress">Email address</label>
-                <input type="text" class="form-control" required [(ngModel)]="userProfile.emailAddress" ngControl="emailAddress" #name="ngForm">
-            </div>
+﻿<div *ngIf="userProfile" class="row">
+    <div class="col-md-8">
+        <div [hidden]="submitted">
+            <form (ngSubmit)="profileSave()" #userProfileForm="ngForm">
+                <div class="form-group">
+                    <label for="firstName">First name</label>
+                    <input type="text" class="form-control" required [(ngModel)]="userProfile.firstName" ngControl="firstName" #name="ngForm">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last name</label>
+                    <input type="text" class="form-control" required [(ngModel)]="userProfile.lastName" ngControl="lastName" #name="ngForm">
+                </div>
+                <div class="form-group">
+                    <label for="emailAddress">Email address</label>
+                    <input type="text" class="form-control" required [(ngModel)]="userProfile.emailAddress" ngControl="emailAddress" #name="ngForm">
+                </div>
             
-            <button type="submit" class="btn btn-default" [disabled]="!userProfileForm.form.valid">Submit</button>
-        </form>
+                <button type="submit" class="btn btn-default" [disabled]="!userProfileForm.form.valid">Submit</button>
+            </form>
+
+            <div [hidden]="!submitted">
+                <h2>Saved!</h2>
+            </div>
+        </div>
     </div>
-    <div [hidden]="!submitted">
-        <h2>Saved!</h2>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="googleId">Google sign in</label>
+            <div *ngIf="userProfile.googleId">
+                Connected
+            </div>
+            <div *ngIf="!userProfile.googleId">
+                Disconnected
+            </div>
+        <div class="form-group">
+            <label for="facebookId">Facebook sign in</label>
+            <div *ngIf="userProfile.facebookId">
+                Connected
+            </div>
+            <div *ngIf="!userProfile.facebookId">
+                Disconnected
+            </div>
+        </div>
     </div>
 </div>

@@ -33,7 +33,7 @@ export class HttpClientService {
         return this.http.put(url, JSON.stringify(data), {
             headers: this.getHeaders()
             })
-            .map(res => res.json())
+            //.map(res => res.json())
             .do(data => console.log(data))
             .catch(this.handleError);
     }
