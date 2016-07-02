@@ -1,4 +1,4 @@
-﻿import {Component, OnInit} from 'angular2/core';
+﻿import {Component, OnInit, Input, Output, EventEmitter} from 'angular2/core';
 import {NgForm} from 'angular2/common';
 
 import {OidcManagerService} from './oidc-manager.service';
@@ -17,6 +17,9 @@ export class AddGameAccountFormComponent implements OnInit {
     public gameAccount: GameAccount;
     public gamePlatforms: GamePlatform[];
 
+    @Output()
+    getGameAccounts = new EventEmitter();
+
     public errorMessage: string = '';
 
     constructor(
@@ -30,11 +33,22 @@ export class AddGameAccountFormComponent implements OnInit {
     }
 
     private addGameAccount() {
-        this._gameAccountsCollectionService.createGameAccount(this.oidcManagerService.OidcManager.profile.sub, this.gameAccount);
+        this._gameAccountsCollectionService.createGameAccount(this.oidcManagerService.OidcManager.profile.sub, this.gameAccount)
+            .subscribe(
+            data => { },
+            error => this.errorMessage = <any>error,
+            () => this.sendEventToGetAccounts()
+        );
+    }
+
+    public sendEventToGetAccounts() {
+        this.getGameAccounts.emit({});
     }
 
     public addAccountSave() {
         this.addGameAccount();
+        this.gameAccount.gamePlatformId = null;
+        this.gameAccount.userName = '';
     }
 
     public ngOnInit() {

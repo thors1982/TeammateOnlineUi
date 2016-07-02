@@ -49,7 +49,12 @@ export class GameAccountsCollectionComponent implements OnInit {
     }
 
     private deleteGameAccount(gameAccount: GameAccount) {
-        this._gameAccountsCollectionService.deleteAccount(this.oidcManagerService.OidcManager.profile.sub, gameAccount.id);
+        this._gameAccountsCollectionService.deleteAccount(this.oidcManagerService.OidcManager.profile.sub, gameAccount.id)
+            .subscribe(
+            data => { },
+            error => this.errorMessage = <any>error,
+            () => this.getGameAccounts()
+            );
     }
 
     public ngOnInit() {

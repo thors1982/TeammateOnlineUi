@@ -26,8 +26,7 @@ export class HttpClientService {
             })
             .map(res => res.json())
             .do(data => console.log(data))
-            .catch(this.handleError)
-            .subscribe();
+            .catch(this.handleError);
     }
 
     public put(url: string, data: any) {
@@ -36,18 +35,16 @@ export class HttpClientService {
             })
             .map(res => res.json())
             .do(data => console.log(data))
-            .catch(this.handleError)
-            .subscribe();
+            .catch(this.handleError);
     }
 
     public delete(url: string) {
         return this.http.delete(url, {
             headers: this.getHeaders()
             })
-            .map(res => res.json())
+            //.map(res => res.json())
             .do(data => console.log(data))
-            .catch(this.handleError)
-            .subscribe();
+            .catch(this.handleError);
     }
 
     private getHeaders() {

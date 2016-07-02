@@ -31,7 +31,7 @@ export class UserProfileFormComponent implements OnInit {
     }
 
     private updateUserProfile() {
-        this._userProfileService.updateUserProfile(this.oidcManagerService.OidcManager.profile.sub, this.userProfile);
+        this._userProfileService.updateUserProfile(this.oidcManagerService.OidcManager.profile.sub, this.userProfile).subscribe();
     }
 
     public profileSave() {

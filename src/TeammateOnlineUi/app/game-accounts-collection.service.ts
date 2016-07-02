@@ -31,14 +31,14 @@ export class GameAccountsCollectionService {
         return this.httpClient.get(apiUrl);
     }
 
-    public updateAccount(userId: string, gameAccountId: string, gameAccount: GameAccount) {
-        let apiUrl = this.baseApiUrl + userId + '/GameAccounts/' + gameAccountId;
+    public updateAccount(userId: string, gameAccountId: number, gameAccount: GameAccount) {
+        let apiUrl = this.baseApiUrl + userId + '/GameAccounts/' + String(gameAccountId);
 
         return this.httpClient.put(apiUrl, gameAccount);
     }
 
     public deleteAccount(userId: string, gameAccountId: number) {
-        let apiUrl = this.baseApiUrl + userId + '/GameAccounts/' + String(gameAccountId));
+        let apiUrl = this.baseApiUrl + userId + '/GameAccounts/' + String(gameAccountId);
 
         return this.httpClient.delete(apiUrl);
     }
