@@ -4,8 +4,8 @@
     <div class="col-xs-6 col-md-3" *ngFor="let friend of friends" [class.selected]="friend === selectedFriend">
         <div class="thumbnail">
             <div class="caption">
-                <strong>{{friend.friendUserProfileId}}</strong>
-                <p>{{friend.friendUserProfileId}}</p>
+                <strong>{{friend.friendUserProfile.firstName}} {{friend.friendUserProfile.lastName}}</strong>
+                <p>{{friend.friendUserProfile.emailAddress}}</p>
             </div>
         </div>
     </div>
