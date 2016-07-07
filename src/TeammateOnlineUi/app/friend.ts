@@ -1,6 +1,6 @@
 ﻿import {UserProfile} from './user-profile';
 
-export interface Friend {
+export class Friend {
     id: number;
     userProfileId: number;
     friendUserProfileId: number;

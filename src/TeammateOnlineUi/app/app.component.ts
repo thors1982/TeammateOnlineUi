@@ -6,6 +6,7 @@ import {FriendsCollectionComponent} from './friends-collection.component';
 import {GameAccountsCollectionComponent} from './game-accounts-collection.component';
 import {GameAccountComponent} from './game-account.component';
 import {UserProfileComponent} from './user-profile.component';
+import {SearchUserProfilesComponent} from './search-user-profiles.component';
 
 import {OidcManagerService} from './oidc-manager.service';
 import {HttpClientService} from './http-client.service';
@@ -46,6 +47,16 @@ import {HttpClientService} from './http-client.service';
             name: 'GameAccount',
             component: GameAccountComponent
         },
+        {
+            path: '/search',
+            name: 'SearchUserProfiles',
+            component: SearchUserProfilesComponent
+        },
+        {
+            path: '/search:searchText',
+            name: 'SearchUserProfiles',
+            component: SearchUserProfilesComponent
+        }
     ])
 
 export class AppComponent implements OnInit {
@@ -53,7 +64,15 @@ export class AppComponent implements OnInit {
     
     public OidcManager: any;
 
+    public globalSearchText: string;
+
     constructor(public oidcManagerService: OidcManagerService, public router: Router) { }
+
+    public globalSearchSave() {
+        this.router.navigate(['/SearchUserProfiles', { searchText: this.globalSearchText }]);
+
+        this.globalSearchText = '';
+    }
 
     public ngOnInit() {
         this.oidcManagerService.checkForOauthCallback();

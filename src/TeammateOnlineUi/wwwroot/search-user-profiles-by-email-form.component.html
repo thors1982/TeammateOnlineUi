@@ -1,0 +1,34 @@
+﻿<div class="row">
+    <div class="col-md-8">
+        <form (ngSubmit)="searchByEmailSave()" #searchUserProfilesByEmailForm="ngForm">
+            <div class="form-group">
+                <label for="emailAddress">Email address</label>
+                <input type="text" class="form-control" required [(ngModel)]="emailAddress" ngControl="emailAddress" #name="ngForm">
+            </div>
+
+            <button type="submit" class="btn btn-default" [disabled]="!searchUserProfilesByEmailForm.form.valid">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+<div class="row">
+    <div *ngIf="foundUserProfiles != 0">
+        <div class="col-xs-6 col-md-3" *ngFor="let userProfile of foundUserProfiles">
+            <div class="thumbnail">
+                <div class="caption">
+                    <strong>{{userProfile.firstName}} {{userProfile.lastName}}</strong>
+                    <p>{{userProfile.emailAddress}}</p>
+                    <p>
+                        <a class="btn btn-default" role="button" (click)="addFriendSave(userProfile)"><i class="fa fa-plus" aria-hidden="true"></i> Add</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="foundUserProfiles == 0">
+        <div class="col-md-12">
+            No results found
+        </div>
+    </div>
+</div>
