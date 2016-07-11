@@ -4,7 +4,7 @@ import {Observable} from 'rxjs/Rx';
 
 import {OidcManagerService} from './oidc-manager.service';
 
-import {UserProfile} from './user-profile';
+import {UserProfile} from './user-profile/user-profile';
 
 @Injectable()
 export class HttpClientService {

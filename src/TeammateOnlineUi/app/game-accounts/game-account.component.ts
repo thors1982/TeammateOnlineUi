@@ -2,12 +2,12 @@
 import {NgForm} from 'angular2/common';
 import {RouteParams} from 'angular2/router';
 
-import {OidcManagerService} from './oidc-manager.service';
-import {GamePlatformsCollectionService} from './game-platforms-collection.service';
+import {OidcManagerService} from '../oidc-manager.service';
+import {GamePlatformsCollectionService} from '../game-platforms-collection.service';
 import {GameAccountsCollectionService} from  './game-accounts-collection.service';
 
 import {GameAccount} from './game-account';
-import {GamePlatform} from './game-platform';
+import {GamePlatform} from '../game-platform';
 
 @Component({
     selector: 'game-account',

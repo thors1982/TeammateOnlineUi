@@ -3,12 +3,12 @@
 import {GameAccountComponent} from './game-account.component';
 import {AddGameAccountFormComponent} from './add-game-account-form.component';
 
-import {OidcManagerService} from './oidc-manager.service';
-import {GamePlatformsCollectionService} from './game-platforms-collection.service';
+import {OidcManagerService} from '../oidc-manager.service';
+import {GamePlatformsCollectionService} from '../game-platforms-collection.service';
 import {GameAccountsCollectionService} from './game-accounts-collection.service';
 
 import {GameAccount} from './game-account';
-import {GamePlatform} from './game-platform';
+import {GamePlatform} from '../game-platform';
 
 @Component({
     templateUrl: 'game-accounts-collection.html',

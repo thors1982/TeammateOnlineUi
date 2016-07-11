@@ -4,10 +4,10 @@ import {RouteParams, RouteData} from 'angular2/router';
 
 import {OidcManagerService} from './oidc-manager.service';
 import {UserProfilesCollectionService} from './user-profiles-collection.service';
-import {FriendsCollectionService} from './friends-collection.service';
+import {FriendsCollectionService} from './friends/friends-collection.service';
 
-import {Friend} from './friend';
-import {UserProfile} from './user-profile';
+import {Friend} from './friends/friend';
+import {UserProfile} from './user-profile/user-profile';
 
 @Component({
     selector: 'search-user-profiles-by-email-form',

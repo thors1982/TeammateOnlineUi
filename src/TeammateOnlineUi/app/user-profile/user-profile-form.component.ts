@@ -1,7 +1,7 @@
 ﻿import {Component, OnInit} from 'angular2/core';
 import {NgForm} from 'angular2/common';
 
-import {OidcManagerService} from './oidc-manager.service';
+import {OidcManagerService} from '../oidc-manager.service';
 import {UserProfileService} from './user-profile.service';
 
 import {UserProfile} from './user-profile';

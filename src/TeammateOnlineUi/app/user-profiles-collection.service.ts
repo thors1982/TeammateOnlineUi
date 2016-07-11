@@ -3,7 +3,7 @@ import {Observable} from 'rxjs/Rx';
 
 import {HttpClientService} from './http-client.service';
 
-import {UserProfile} from './user-profile';
+import {UserProfile} from './user-profile/user-profile';
 
 @Injectable()
 export class UserProfilesCollectionService {

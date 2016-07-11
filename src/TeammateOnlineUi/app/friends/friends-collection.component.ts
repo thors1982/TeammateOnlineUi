@@ -1,6 +1,6 @@
 ﻿import {Component, OnInit} from 'angular2/core';
 
-import {OidcManagerService} from './oidc-manager.service';
+import {OidcManagerService} from '../oidc-manager.service';
 import {FriendsCollectionService} from './friends-collection.service';
 
 import {Friend} from './friend';

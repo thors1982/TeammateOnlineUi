@@ -1,12 +1,12 @@
 ﻿import {Component, OnInit, Input, Output, EventEmitter} from 'angular2/core';
 import {NgForm} from 'angular2/common';
 
-import {OidcManagerService} from './oidc-manager.service';
-import {GamePlatformsCollectionService} from './game-platforms-collection.service';
+import {OidcManagerService} from '../oidc-manager.service';
+import {GamePlatformsCollectionService} from '../game-platforms-collection.service';
 import {GameAccountsCollectionService} from  './game-accounts-collection.service';
 
 import {GameAccount} from './game-account';
-import {GamePlatform} from './game-platform';
+import {GamePlatform} from '../game-platform';
 
 @Component({
     selector: 'add-game-account-form',
