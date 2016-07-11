@@ -1,11 +1,11 @@
 ﻿import {Component, OnInit} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router} from 'angular2/router';
 
-import {DashboardComponent} from './dashboard.component';
-import {FriendsCollectionComponent} from './friends-collection.component';
-import {GameAccountsCollectionComponent} from './game-accounts-collection.component';
-import {GameAccountComponent} from './game-account.component';
-import {UserProfileComponent} from './user-profile.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {FriendsCollectionComponent} from './friends/friends-collection.component';
+import {GameAccountsCollectionComponent} from './game-accounts/game-accounts-collection.component';
+import {GameAccountComponent} from './game-accounts/game-account.component';
+import {UserProfileComponent} from './user-profile/user-profile.component';
 import {SearchUserProfilesComponent} from './search-user-profiles.component';
 
 import {OidcManagerService} from './oidc-manager.service';

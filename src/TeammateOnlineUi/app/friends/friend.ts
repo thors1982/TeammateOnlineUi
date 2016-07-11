@@ -1,3 +1,4 @@
+﻿import {UserProfile} from '../user-profile/user-profile';
 
 export class Friend {
     id: number;
