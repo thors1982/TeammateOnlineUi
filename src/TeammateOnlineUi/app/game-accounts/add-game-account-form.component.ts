@@ -41,7 +41,7 @@ export class AddGameAccountFormComponent implements OnInit {
         );
     }
 
-    public sendEventToGetAccounts() {
+    private sendEventToGetAccounts() {
         this.getGameAccounts.emit({});
     }
 

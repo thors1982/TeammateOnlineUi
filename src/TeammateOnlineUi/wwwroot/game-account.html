@@ -2,7 +2,6 @@
     <div *ngFor="let gamePlatform of gamePlatforms">
         <div *ngIf="gamePlatform.id == gameAccount.gamePlatformId">
             <form (ngSubmit)="gameAccountSave()" #gameAccountForm="ngForm">
-                <h2>{{gamePlatform.name}} details</h2>
                 <div><label>Id: </label>{{gameAccount.id}}</div>
                 <div class="form-group">
                     <label for="userName">User name: </label>

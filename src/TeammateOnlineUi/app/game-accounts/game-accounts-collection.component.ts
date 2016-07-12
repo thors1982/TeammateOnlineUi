@@ -45,7 +45,7 @@ export class GameAccountsCollectionComponent implements OnInit {
             .subscribe(
             gameAccounts => this.userProfileGameAccounts = gameAccounts,
             error => this.errorMessage = <any>error
-            );
+        );
     }
 
     private deleteGameAccount(gameAccount: GameAccount) {
@@ -54,7 +54,11 @@ export class GameAccountsCollectionComponent implements OnInit {
             data => { },
             error => this.errorMessage = <any>error,
             () => this.getGameAccounts()
-            );
+        );
+    }
+
+    private clearSelectedGameAccount() {
+        this.selectedGameAccount = null;
     }
 
     public ngOnInit() {

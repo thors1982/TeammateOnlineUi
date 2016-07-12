@@ -1,4 +1,4 @@
-﻿import {Component, OnInit} from 'angular2/core';
+﻿import {Component, OnInit, Input, Output, EventEmitter} from 'angular2/core';
 import {NgForm} from 'angular2/common';
 import {RouteParams} from 'angular2/router';
 
@@ -19,6 +19,9 @@ import {GamePlatform} from '../game-platform';
 export class GameAccountComponent implements OnInit {
     public gameAccount: GameAccount;
     public gamePlatforms: GamePlatform[];
+
+    @Output()
+    clearSelectedGameAccount = new EventEmitter();
 
     public errorMessage: string = '';
 
@@ -44,7 +47,16 @@ export class GameAccountComponent implements OnInit {
     }
 
     private updateGameAccount() {
-        this._gameAccountsCollectionService.updateAccount(this.oidcManagerService.OidcManager.profile.sub, +this.gameAccount.id, this.gameAccount).subscribe();
+        this._gameAccountsCollectionService.updateAccount(this.oidcManagerService.OidcManager.profile.sub, +this.gameAccount.id, this.gameAccount)
+            .subscribe(
+            data => { },
+            error => this.errorMessage = <any>error,
+            () => this.sendEventToGetAccounts()
+        );
+    }
+
+    private sendEventToGetAccounts() {
+        this.clearSelectedGameAccount.emit({});
     }
 
     public gameAccountSave() {
