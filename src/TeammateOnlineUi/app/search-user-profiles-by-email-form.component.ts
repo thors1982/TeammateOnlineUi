@@ -2,6 +2,8 @@
 import {NgForm} from 'angular2/common';
 import {RouteParams, RouteData} from 'angular2/router';
 
+import {GravatarComponent} from './gravatar.component';
+
 import {OidcManagerService} from './oidc-manager.service';
 import {UserProfilesCollectionService} from './user-profiles-collection.service';
 import {FriendsCollectionService} from './friends/friends-collection.service';
@@ -13,7 +15,9 @@ import {UserProfile} from './user-profile/user-profile';
     selector: 'search-user-profiles-by-email-form',
     templateUrl: 'search-user-profiles-by-email-form.component.html',
 
-    providers: [UserProfilesCollectionService, FriendsCollectionService]
+    providers: [UserProfilesCollectionService, FriendsCollectionService],
+
+    directives: [GravatarComponent]
 })
 
 export class SearchUserProfilesByEmailFormComponent implements OnInit {

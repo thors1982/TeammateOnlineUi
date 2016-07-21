@@ -11,13 +11,17 @@
 
     <!-- Load jquery -->
     <script src="lib/jquery/dist/jquery.min.js"></script>
+
     <!-- Load bootstrap -->
     <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- Oauth/Opend ID connect library -->
     <script src="lib/oidc-token-manager.js"></script>
 
-    <!-- Load libraries -->
+    <!-- Load MD5 library, used for gravatar -->
+    <script src="lib/spark-md5.min.js"></script>
+
+    <!-- Load Angular libraries -->
     <script src="lib/es6-shim.min.js"></script>
     <script src="lib/system-polyfills.js"></script>
     <script src="lib/shims_for_IE.js"></script>
@@ -37,7 +41,7 @@
                 app: {
                     defaultExtension: 'js'
                 }
-            }
+            },
         });
     </script>
     <script>

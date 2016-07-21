@@ -1,5 +1,7 @@
 ﻿import {Component, OnInit} from 'angular2/core';
 
+import {GravatarComponent} from '../gravatar.component';
+
 import {OidcManagerService} from '../oidc-manager.service';
 import {FriendsCollectionService} from './friends-collection.service';
 
@@ -8,9 +10,9 @@ import {Friend} from './friend';
 @Component({
     templateUrl: 'friends-collection.html',
 
-    directives: [],
+    providers: [FriendsCollectionService],
 
-    providers: [FriendsCollectionService,]
+    directives: [GravatarComponent]
 })
 
 export class FriendsCollectionComponent implements OnInit {

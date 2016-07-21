@@ -34,6 +34,7 @@ var nodeFilesToMove = [
    paths.npmsrc + '/es6-shim/es6-shim.map',
    paths.npmsrc + '/angular2/es6/dev/src/testing/shims_for_IE.js',
    paths.npmsrc + '/oidc-token-manager/dist/oidc-token-manager.js',
+   paths.npmsrc + '/spark-md5/spark-md5.min.js'
 ];
 
 gulp.task('moveNodeFiles', ['moveJsFiles', 'moveBootstrap', 'moveFontAwesome', 'moveJQuery']);

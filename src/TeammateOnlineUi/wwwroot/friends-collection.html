@@ -4,6 +4,7 @@
     <div class="col-xs-6 col-md-3" *ngFor="let friend of friends" [class.selected]="friend === selectedFriend">
         <div class="thumbnail">
             <div class="caption">
+                <gravatar [email]="friend.friendUserProfile.emailAddress" [size]="25"></gravatar>
                 <strong>{{friend.friendUserProfile.firstName}} {{friend.friendUserProfile.lastName}}</strong>
                 <p>{{friend.friendUserProfile.emailAddress}}</p>
             </div>

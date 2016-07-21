@@ -1,6 +1,8 @@
 ﻿import {Component, OnInit} from 'angular2/core';
 import {NgForm} from 'angular2/common';
 
+import {GravatarComponent} from '../gravatar.component';
+
 import {OidcManagerService} from '../oidc-manager.service';
 import {UserProfileService} from './user-profile.service';
 
@@ -10,7 +12,9 @@ import {UserProfile} from './user-profile';
     selector: 'user-profile-form',
     templateUrl: 'user-profile-form.component.html',
 
-    providers: [UserProfileService]
+    providers: [UserProfileService],
+
+    directives: [GravatarComponent]
 })
 
 export class UserProfileFormComponent implements OnInit {

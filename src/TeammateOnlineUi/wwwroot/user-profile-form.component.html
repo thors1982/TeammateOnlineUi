@@ -1,5 +1,6 @@
 ﻿<div *ngIf="userProfile" class="row">
     <div class="col-md-8">
+        <gravatar [email]="userProfile.emailAddress" [size]="100"></gravatar>
         <div [hidden]="submitted">
             <form (ngSubmit)="profileSave()" #userProfileForm="ngForm">
                 <div class="form-group">
