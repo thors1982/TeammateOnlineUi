@@ -16,6 +16,8 @@ var paths = {
     bootstrapdest: "./wwwroot/lib/bootstrap",
     fontawesomesrc: "font-awesome/**/*",
     fontawesomedest: "./wwwroot/lib/font-awesome",
+    jquerysrc: "jquery/**/*",
+    jquerydest: "./wwwroot/lib/jquery"
 }
 
 var nodeFilesToMove = [
@@ -34,7 +36,7 @@ var nodeFilesToMove = [
    paths.npmsrc + '/oidc-token-manager/dist/oidc-token-manager.js',
 ];
 
-gulp.task('moveNodeFiles', ['moveJsFiles', 'moveBootstrap', 'moveFontAwesome']);
+gulp.task('moveNodeFiles', ['moveJsFiles', 'moveBootstrap', 'moveFontAwesome', 'moveJQuery']);
 
 gulp.task('moveJsFiles', function () {
     return gulp.src(nodeFilesToMove).pipe(gulp.dest(paths.nodedest));
@@ -46,6 +48,10 @@ gulp.task('moveBootstrap', function () {
 
 gulp.task('moveFontAwesome', function () {
     return gulp.src([paths.npmsrc + paths.fontawesomesrc]).pipe(gulp.dest(paths.fontawesomedest));
+});
+
+gulp.task('moveJQuery', function () {
+    return gulp.src([paths.npmsrc + paths.jquerysrc]).pipe(gulp.dest(paths.jquerydest));
 });
 
 gulp.task("cleanNode", function () {
