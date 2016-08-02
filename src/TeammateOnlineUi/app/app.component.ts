@@ -6,7 +6,7 @@ import {FriendsCollectionComponent} from './friends/friends-collection.component
 import {GameAccountsCollectionComponent} from './game-accounts/game-accounts-collection.component';
 import {GameAccountComponent} from './game-accounts/game-account.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
-import {SearchUserProfilesComponent} from './search-user-profiles.component';
+import {SearchComponent} from './search.component';
 
 import {OidcManagerService} from './oidc-manager.service';
 import {HttpClientService} from './http-client.service';
@@ -49,13 +49,13 @@ import {HttpClientService} from './http-client.service';
         },
         {
             path: '/search',
-            name: 'SearchUserProfiles',
-            component: SearchUserProfilesComponent
+            name: 'Search',
+            component: SearchComponent
         },
         {
             path: '/search:searchText',
-            name: 'SearchUserProfiles',
-            component: SearchUserProfilesComponent
+            name: 'Search',
+            component: SearchComponent
         }
     ])
 
@@ -69,7 +69,7 @@ export class AppComponent implements OnInit {
     constructor(public oidcManagerService: OidcManagerService, public router: Router) { }
 
     public globalSearchSave() {
-        this.router.navigate(['/SearchUserProfiles', { searchText: this.globalSearchText }]);
+        this.router.navigate(['/Search', { searchText: this.globalSearchText }]);
 
         this.globalSearchText = '';
     }
