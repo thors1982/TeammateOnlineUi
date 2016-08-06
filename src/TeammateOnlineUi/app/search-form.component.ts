@@ -8,9 +8,11 @@ import {OidcManagerService} from './oidc-manager.service';
 import {GamePlatformsCollectionService} from './game-platforms-collection.service';
 import {UserProfilesCollectionService} from './user-profiles-collection.service';
 import {FriendsCollectionService} from './friends/friends-collection.service';
+import {FriendRequestsCollectionService} from './friends/friend-requests-collection.service';
 import {SearchService} from './search.service';
 
 import {Friend} from './friends/friend';
+import {FriendRequest} from './friends/friend-request';
 import {UserProfile} from './user-profile/user-profile';
 import {Search} from './search';
 import {GamePlatform} from './game-platform';
@@ -19,13 +21,13 @@ import {GamePlatform} from './game-platform';
     selector: 'search-form',
     templateUrl: 'search-form.component.html',
 
-    providers: [SearchService, FriendsCollectionService, GamePlatformsCollectionService],
+    providers: [SearchService, FriendsCollectionService, GamePlatformsCollectionService, FriendRequestsCollectionService],
 
     directives: [GravatarComponent]
 })
 
 export class SearchFormComponent implements OnInit {
-    constructor(params: RouteParams, data: RouteData, public oidcManagerService: OidcManagerService, private _searchService: SearchService, private _gamePlatformsCollectionService: GamePlatformsCollectionService, private _friendsCollectionService: FriendsCollectionService) {
+    constructor(params: RouteParams, data: RouteData, public oidcManagerService: OidcManagerService, private _searchService: SearchService, private _gamePlatformsCollectionService: GamePlatformsCollectionService, private _friendsCollectionService: FriendsCollectionService, private _friendRequestsCollectionService: FriendRequestsCollectionService) {
         this.searchText = params.get('searchText');
         if (this.searchText != null) {
             this.searchQuery();
@@ -48,12 +50,14 @@ export class SearchFormComponent implements OnInit {
         this._searchService.query(this.searchText).subscribe((s: Search) => this.completedSearch = s);
     }
     
-    private addFriend(newFriendId: number) {
-        let newFriend = new Friend();
-        newFriend.userProfileId = +this.oidcManagerService.OidcManager.profile.sub;
-        newFriend.friendUserProfileId = newFriendId;
+    private addFriendRequest(newFriendId: number) {
+        let newFriendRequest = new FriendRequest();
+        newFriendRequest.userProfileId = +this.oidcManagerService.OidcManager.profile.sub;
+        newFriendRequest.friendUserProfileId = newFriendId;
+        newFriendRequest.isAccepted = false;
+        newFriendRequest.isPending = true;
 
-        this._friendsCollectionService.createFriend(this.oidcManagerService.OidcManager.profile.sub, newFriend)
+        this._friendRequestsCollectionService.createFriendRequest(this.oidcManagerService.OidcManager.profile.sub, newFriendRequest)
             .subscribe(
             error => this.errorMessage = <any>error
             );
@@ -67,7 +71,7 @@ export class SearchFormComponent implements OnInit {
         this.searchQuery();
     }
 
-    public addFriendSave(newFriendsProfileId: number) {
-        this.addFriend(newFriendsProfileId);
+    public addFriendRequestSave(newFriendsProfileId: number) {
+        this.addFriendRequest(newFriendsProfileId);
     }
 }
