@@ -7,25 +7,36 @@ import {UserProfile} from './user-profile';
 
 @Injectable()
 export class UserProfileService {
-    private baseApiUrl = 'http://localhost:20698/api/UserProfiles/';
+    private baseApiUrl = 'http://localhost:20698/api/UserProfiles';
 
     constructor(public httpClient: HttpClientService) { }
 
-    public getUserProfile(id: string): Observable<UserProfile> {
-        let apiUrl = this.baseApiUrl + id;
+    public findByEmailAddress(emailAddress: string) {
+        let apiUrl = this.getCollectionUrl() + '?emailAddress=' + emailAddress;
 
         return this.httpClient.get(apiUrl);
     }
 
-    public updateUserProfile(id: string, user: UserProfile) {
-        let apiUrl = this.baseApiUrl + id;
+    public getUserProfile(userId: number): Observable<UserProfile> {
+        let apiUrl = this.getDetailUrl(userId);
+        
+        return this.httpClient.get(apiUrl);
+    }
+
+    public updateUserProfile(userId: number, user: UserProfile) {
+        let apiUrl = this.getDetailUrl(userId);
         
         return this.httpClient.put(apiUrl, user);
     }
 
-    public findByEmailAddress(emailAddress: string) {
-        let apiUrl = this.baseApiUrl + '?emailAddress=' + emailAddress;
+    private getCollectionUrl(): string {
+        return this.baseApiUrl;
+    }
 
-        return this.httpClient.get(apiUrl);
+    private getDetailUrl(userId: number): string {
+        let apiUrl = this.getCollectionUrl();
+        apiUrl = apiUrl + '/' + userId.toString()
+
+        return apiUrl;
     }
 }

@@ -11,21 +11,35 @@ export class FriendService {
 
     constructor(public httpClient: HttpClientService) { }
 
-    public getFriend(userId: string, friendId: string) {
-        let apiUrl = this.baseApiUrl + userId + '/Friends/' + friendId;
+    public getFriends(userId: number) {
+        let apiUrl = this.getCollectionUrl(userId);
 
         return this.httpClient.get(apiUrl);
     }
 
-    public getFriends(userId: string) {
-        let apiUrl = this.baseApiUrl + userId + '/Friends';
-
-        return this.httpClient.get(apiUrl);
-    }
-
-    public createFriend(userId: string, friend: Friend) {
-        let apiUrl = this.baseApiUrl + userId + '/Friends';
+    public createFriend(userId: number, friend: Friend) {
+        let apiUrl = this.getCollectionUrl(userId);
 
         return this.httpClient.post(apiUrl, friend);
+    }
+
+    public getFriend(userId: number, friendId: number) {
+        let apiUrl = this.getDetailUrl(userId, friendId);
+
+        return this.httpClient.get(apiUrl);
+    }
+
+    private getCollectionUrl(userId: number): string {
+        let apiUrl = this.baseApiUrl;
+        apiUrl = apiUrl + userId.toString() + '/Friends';
+
+        return apiUrl;
+    }
+
+    private getDetailUrl(userId: number, friendId: number): string {
+        let apiUrl = this.getCollectionUrl(userId);
+        apiUrl = apiUrl + '/' + friendId.toString()
+
+        return apiUrl;
     }
 }

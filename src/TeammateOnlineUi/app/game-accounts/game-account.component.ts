@@ -39,7 +39,7 @@ export class GameAccountComponent implements OnInit {
     private getGameAccount() {
         let id = +this._routeParams.get('id');
 
-        this._gameAccountService.getAccount(this.oidcManagerService.OidcManager.profile.sub, id.toString())
+        this._gameAccountService.getAccount(this.oidcManagerService.OidcManager.profile.sub, id)
             .subscribe(
             gameAccount => this.gameAccount = gameAccount,
             error => this.errorMessage = <any>error

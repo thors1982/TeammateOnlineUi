@@ -33,7 +33,7 @@ export class FriendGameAccountsCollectionComponent implements OnInit {
     public errorMessage: string = '';
 
     private getFriend(friendId: number) {
-        this._friendService.getFriend(this.oidcManagerService.OidcManager.profile.sub, friendId.toString())
+        this._friendService.getFriend(this.oidcManagerService.OidcManager.profile.sub, friendId)
             .subscribe(f => this.friend = f,
             error => this.errorMessage = <any>error,
             () => this.getGameAccounts());
@@ -44,7 +44,7 @@ export class FriendGameAccountsCollectionComponent implements OnInit {
     }
 
     private getGameAccounts() {
-        this._gameAccountService.getGameAccounts(this.friend.friendUserProfile.id.toString())
+        this._gameAccountService.getGameAccounts(this.friend.friendUserProfile.id)
             .subscribe(
             gameAccounts => this.friendsGameAccounts = gameAccounts,
             error => this.errorMessage = <any>error
