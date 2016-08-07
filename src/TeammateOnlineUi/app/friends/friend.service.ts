@@ -16,4 +16,16 @@ export class FriendService {
 
         return this.httpClient.get(apiUrl);
     }
+
+    public getFriends(userId: string) {
+        let apiUrl = this.baseApiUrl + userId + '/Friends';
+
+        return this.httpClient.get(apiUrl);
+    }
+
+    public createFriend(userId: string, friend: Friend) {
+        let apiUrl = this.baseApiUrl + userId + '/Friends';
+
+        return this.httpClient.post(apiUrl, friend);
+    }
 }

@@ -4,8 +4,8 @@ import { Router } from 'angular2/router';
 import {GravatarComponent} from '../gravatar.component';
 
 import {OidcManagerService} from '../oidc-manager.service';
-import {FriendsCollectionService} from './friends-collection.service';
-import {FriendRequestsCollectionService} from './friend-requests-collection.service';
+import {FriendService} from './friend.service';
+import {FriendRequestService} from './friend-request.service';
 
 import {Friend} from './friend';
 import {FriendRequest} from './friend-request';
@@ -13,7 +13,7 @@ import {FriendRequest} from './friend-request';
 @Component({
     templateUrl: 'friends-collection.html',
 
-    providers: [FriendsCollectionService, FriendRequestsCollectionService],
+    providers: [FriendService, FriendRequestService],
 
     directives: [GravatarComponent]
 })
@@ -22,7 +22,7 @@ export class FriendsCollectionComponent implements OnInit {
     constructor(
         public oidcManagerService: OidcManagerService,
         public router: Router,
-        private _friendsCollectionService: FriendsCollectionService, private _friendRequestsCollectionService: FriendRequestsCollectionService) {
+        private _friendService: FriendService, private _friendRequestService: FriendRequestService) {
     }
 
     public friends: Friend[];
@@ -34,7 +34,7 @@ export class FriendsCollectionComponent implements OnInit {
     public selectedFriend: Friend;    
 
     private getFriends() {
-        this._friendsCollectionService.getFriends(this.oidcManagerService.OidcManager.profile.sub)
+        this._friendService.getFriends(this.oidcManagerService.OidcManager.profile.sub)
             .subscribe(
             friends => this.friends = friends,
             error => this.errorMessage = <any>error
@@ -42,7 +42,7 @@ export class FriendsCollectionComponent implements OnInit {
     }
 
     private getFriendRequests() {
-        this._friendRequestsCollectionService.getFriendRequests(this.oidcManagerService.OidcManager.profile.sub)
+        this._friendRequestService.getFriendRequests(this.oidcManagerService.OidcManager.profile.sub)
             .subscribe(
             friendRequests => this.friendRequests = friendRequests,
             error => this.errorMessage = <any>error
@@ -53,7 +53,7 @@ export class FriendsCollectionComponent implements OnInit {
         acceptFriendRequest.isAccepted = true;
         acceptFriendRequest.isPending = false;
 
-        this._friendRequestsCollectionService.updateFriendRequest(this.oidcManagerService.OidcManager.profile.sub, acceptFriendRequest)
+        this._friendRequestService.updateFriendRequest(this.oidcManagerService.OidcManager.profile.sub, acceptFriendRequest)
             .subscribe(
             data => { },
             error => this.errorMessage = <any>error,
@@ -62,7 +62,7 @@ export class FriendsCollectionComponent implements OnInit {
     }
 
     private declineFriendRequest(declineFriendRequest: FriendRequest) {
-        this._friendRequestsCollectionService.deleteFriendRequest(this.oidcManagerService.OidcManager.profile.sub, declineFriendRequest.id)
+        this._friendRequestService.deleteFriendRequest(this.oidcManagerService.OidcManager.profile.sub, declineFriendRequest.id)
             .subscribe(
             data => { },
             error => this.errorMessage = <any>error,

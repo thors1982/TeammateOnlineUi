@@ -6,7 +6,7 @@ import {HttpClientService} from '../http-client.service';
 import {FriendRequest} from './friend-request';
 
 @Injectable()
-export class FriendRequestsCollectionService {
+export class FriendRequestService {
     private baseApiUrl = 'http://localhost:20698/api/UserProfiles/';
 
     constructor(public httpClient: HttpClientService) { }

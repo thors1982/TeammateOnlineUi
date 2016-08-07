@@ -6,8 +6,8 @@ import {GravatarComponent} from './gravatar.component';
 
 import {OidcManagerService} from './oidc-manager.service';
 import {GamePlatformService} from './game-platform.service';
-import {FriendsCollectionService} from './friends/friends-collection.service';
-import {FriendRequestsCollectionService} from './friends/friend-requests-collection.service';
+import {FriendService} from './friends/friend.service';
+import {FriendRequestService} from './friends/friend-request.service';
 import {SearchService} from './search.service';
 
 import {Friend} from './friends/friend';
@@ -20,13 +20,13 @@ import {GamePlatform} from './game-platform';
     selector: 'search-form',
     templateUrl: 'search-form.component.html',
 
-    providers: [SearchService, FriendsCollectionService, GamePlatformService, FriendRequestsCollectionService],
+    providers: [SearchService, FriendService, GamePlatformService, FriendRequestService],
 
     directives: [GravatarComponent]
 })
 
 export class SearchFormComponent implements OnInit {
-    constructor(params: RouteParams, data: RouteData, public oidcManagerService: OidcManagerService, private _searchService: SearchService, private _gamePlatformService: GamePlatformService, private _friendsCollectionService: FriendsCollectionService, private _friendRequestsCollectionService: FriendRequestsCollectionService) {
+    constructor(params: RouteParams, data: RouteData, public oidcManagerService: OidcManagerService, private _searchService: SearchService, private _gamePlatformService: GamePlatformService, private _friendService: FriendService, private _friendRequestService: FriendRequestService) {
         this.searchText = params.get('searchText');
         if (this.searchText != null) {
             this.searchQuery();
@@ -56,7 +56,7 @@ export class SearchFormComponent implements OnInit {
         newFriendRequest.isAccepted = false;
         newFriendRequest.isPending = true;
 
-        this._friendRequestsCollectionService.createFriendRequest(this.oidcManagerService.OidcManager.profile.sub, newFriendRequest)
+        this._friendRequestService.createFriendRequest(this.oidcManagerService.OidcManager.profile.sub, newFriendRequest)
             .subscribe(
             error => this.errorMessage = <any>error
             );
