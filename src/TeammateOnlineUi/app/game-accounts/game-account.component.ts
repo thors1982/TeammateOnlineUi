@@ -3,7 +3,7 @@ import {NgForm} from 'angular2/common';
 import {RouteParams} from 'angular2/router';
 
 import {OidcManagerService} from '../oidc-manager.service';
-import {GamePlatformsCollectionService} from '../game-platforms-collection.service';
+import {GamePlatformsService} from '../game-platforms.service';
 import {GameAccountsCollectionService} from  './game-accounts-collection.service';
 
 import {GameAccount} from './game-account';
@@ -27,13 +27,13 @@ export class GameAccountComponent implements OnInit {
 
     constructor(
         public oidcManagerService: OidcManagerService,
-        private _gamePlatformsCollectionService: GamePlatformsCollectionService,
+        private _gamePlatformsService: GamePlatformsService,
         private _gameAccountsCollectionService: GameAccountsCollectionService,
         private _routeParams: RouteParams) {
     }
 
     private getGamePlatforms() {
-        this._gamePlatformsCollectionService.getGamePlatforms().subscribe((gp: GamePlatform[]) => this.gamePlatforms = gp);
+        this._gamePlatformsService.getGamePlatforms().subscribe((gp: GamePlatform[]) => this.gamePlatforms = gp);
     }
 
     private getGameAccount() {

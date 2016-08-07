@@ -4,7 +4,7 @@ import {GameAccountComponent} from './game-account.component';
 import {AddGameAccountFormComponent} from './add-game-account-form.component';
 
 import {OidcManagerService} from '../oidc-manager.service';
-import {GamePlatformsCollectionService} from '../game-platforms-collection.service';
+import {GamePlatformsService} from '../game-platforms.service';
 import {GameAccountsCollectionService} from './game-accounts-collection.service';
 
 import {GameAccount} from './game-account';
@@ -15,13 +15,13 @@ import {GamePlatform} from '../game-platform';
 
     directives: [GameAccountComponent, AddGameAccountFormComponent],
 
-    providers: [GamePlatformsCollectionService, GameAccountsCollectionService]
+    providers: [GamePlatformsService, GameAccountsCollectionService]
 })
 
 export class GameAccountsCollectionComponent implements OnInit {
     constructor(
         public oidcManagerService: OidcManagerService,
-        private _gamePlatformsCollectionService: GamePlatformsCollectionService,
+        private _gamePlatformsService: GamePlatformsService,
         private _gameAccountsCollectionService: GameAccountsCollectionService) {
     }
 
@@ -37,7 +37,7 @@ export class GameAccountsCollectionComponent implements OnInit {
     public newGameAccount: GameAccount;
 
     private getGamePlatforms() {
-        this._gamePlatformsCollectionService.getGamePlatforms().subscribe((gp: GamePlatform[]) => this.gamePlatforms = gp);
+        this._gamePlatformsService.getGamePlatforms().subscribe((gp: GamePlatform[]) => this.gamePlatforms = gp);
     }
 
     private getGameAccounts() {

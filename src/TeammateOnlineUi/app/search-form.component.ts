@@ -5,7 +5,7 @@ import {RouteParams, RouteData} from 'angular2/router';
 import {GravatarComponent} from './gravatar.component';
 
 import {OidcManagerService} from './oidc-manager.service';
-import {GamePlatformsCollectionService} from './game-platforms-collection.service';
+import {GamePlatformsService} from './game-platforms.service';
 import {UserProfilesCollectionService} from './user-profiles-collection.service';
 import {FriendsCollectionService} from './friends/friends-collection.service';
 import {FriendRequestsCollectionService} from './friends/friend-requests-collection.service';
@@ -21,13 +21,13 @@ import {GamePlatform} from './game-platform';
     selector: 'search-form',
     templateUrl: 'search-form.component.html',
 
-    providers: [SearchService, FriendsCollectionService, GamePlatformsCollectionService, FriendRequestsCollectionService],
+    providers: [SearchService, FriendsCollectionService, GamePlatformsService, FriendRequestsCollectionService],
 
     directives: [GravatarComponent]
 })
 
 export class SearchFormComponent implements OnInit {
-    constructor(params: RouteParams, data: RouteData, public oidcManagerService: OidcManagerService, private _searchService: SearchService, private _gamePlatformsCollectionService: GamePlatformsCollectionService, private _friendsCollectionService: FriendsCollectionService, private _friendRequestsCollectionService: FriendRequestsCollectionService) {
+    constructor(params: RouteParams, data: RouteData, public oidcManagerService: OidcManagerService, private _searchService: SearchService, private _gamePlatformsService: GamePlatformsService, private _friendsCollectionService: FriendsCollectionService, private _friendRequestsCollectionService: FriendRequestsCollectionService) {
         this.searchText = params.get('searchText');
         if (this.searchText != null) {
             this.searchQuery();
@@ -43,7 +43,7 @@ export class SearchFormComponent implements OnInit {
     public searchText: string = '';
 
     private getGamePlatforms() {
-        this._gamePlatformsCollectionService.getGamePlatforms().subscribe((gp: GamePlatform[]) => this.gamePlatforms = gp);
+        this._gamePlatformsService.getGamePlatforms().subscribe((gp: GamePlatform[]) => this.gamePlatforms = gp);
     }
 
     private searchQuery() {

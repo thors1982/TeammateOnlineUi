@@ -3,7 +3,7 @@ import {RouteParams, RouteData} from 'angular2/router';
 
 import {OidcManagerService} from '../oidc-manager.service';
 import {FriendService} from './friend.service';
-import {GamePlatformsCollectionService} from '../game-platforms-collection.service';
+import {GamePlatformsService} from '../game-platforms.service';
 import {GameAccountsCollectionService} from '../game-accounts/game-accounts-collection.service';
 
 import {GameAccount} from '../game-accounts/game-account';
@@ -13,7 +13,7 @@ import {Friend} from './friend';
 @Component({
     templateUrl: 'friend-game-accounts-collection.html',
 
-    providers: [FriendService, GamePlatformsCollectionService, GameAccountsCollectionService],
+    providers: [FriendService, GamePlatformsService, GameAccountsCollectionService],
 })
 
 export class FriendGameAccountsCollectionComponent implements OnInit {
@@ -21,7 +21,7 @@ export class FriendGameAccountsCollectionComponent implements OnInit {
         public oidcManagerService: OidcManagerService,
         public params: RouteParams,
         private _friendService: FriendService,
-        private _gamePlatformsCollectionService: GamePlatformsCollectionService,
+        private _gamePlatformsService: GamePlatformsService,
         private _gameAccountsCollectionService: GameAccountsCollectionService) {
     }
 
@@ -40,7 +40,7 @@ export class FriendGameAccountsCollectionComponent implements OnInit {
     }
 
     private getGamePlatforms() {
-        this._gamePlatformsCollectionService.getGamePlatforms().subscribe((gp: GamePlatform[]) => this.gamePlatforms = gp);
+        this._gamePlatformsService.getGamePlatforms().subscribe((gp: GamePlatform[]) => this.gamePlatforms = gp);
     }
 
     private getGameAccounts() {

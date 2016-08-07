@@ -5,7 +5,7 @@ import {Observable} from 'rxjs/Rx';
 import {GamePlatform} from './game-platform';
 
 @Injectable()
-export class GamePlatformsCollectionService {
+export class GamePlatformsService {
     private apiUrl = 'http://localhost:20698/api/gameplatforms';
     
     constructor(public http: Http) { }
