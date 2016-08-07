@@ -22,4 +22,10 @@ export class UserProfileService {
         
         return this.httpClient.put(apiUrl, user);
     }
+
+    public findByEmailAddress(emailAddress: string) {
+        let apiUrl = this.baseApiUrl + '?emailAddress=' + emailAddress;
+
+        return this.httpClient.get(apiUrl);
+    }
 }

@@ -2,8 +2,8 @@
 import {NgForm} from 'angular2/common';
 
 import {OidcManagerService} from '../oidc-manager.service';
-import {GamePlatformsService} from '../game-platforms.service';
-import {GameAccountsCollectionService} from  './game-accounts-collection.service';
+import {GamePlatformService} from '../game-platform.service';
+import {GameAccountService} from  './game-account.service';
 
 import {GameAccount} from './game-account';
 import {GamePlatform} from '../game-platform';
@@ -24,16 +24,16 @@ export class AddGameAccountFormComponent implements OnInit {
 
     constructor(
         public oidcManagerService: OidcManagerService,
-        private _gamePlatformsService: GamePlatformsService,
-        private _gameAccountsCollectionService: GameAccountsCollectionService) {
+        private _gamePlatformService: GamePlatformService,
+        private _gameAccountService: GameAccountService) {
     }
 
     private getGamePlatforms() {
-        this._gamePlatformsService.getGamePlatforms().subscribe((gp: GamePlatform[]) => this.gamePlatforms = gp);
+        this._gamePlatformService.getGamePlatforms().subscribe((gp: GamePlatform[]) => this.gamePlatforms = gp);
     }
 
     private addGameAccount() {
-        this._gameAccountsCollectionService.createGameAccount(this.oidcManagerService.OidcManager.profile.sub, this.gameAccount)
+        this._gameAccountService.createGameAccount(this.oidcManagerService.OidcManager.profile.sub, this.gameAccount)
             .subscribe(
             data => { },
             error => this.errorMessage = <any>error,

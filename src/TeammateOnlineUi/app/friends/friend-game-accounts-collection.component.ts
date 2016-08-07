@@ -3,8 +3,8 @@ import {RouteParams, RouteData} from 'angular2/router';
 
 import {OidcManagerService} from '../oidc-manager.service';
 import {FriendService} from './friend.service';
-import {GamePlatformsService} from '../game-platforms.service';
-import {GameAccountsCollectionService} from '../game-accounts/game-accounts-collection.service';
+import {GamePlatformService} from '../game-platform.service';
+import {GameAccountService} from '../game-accounts/game-account.service';
 
 import {GameAccount} from '../game-accounts/game-account';
 import {GamePlatform} from '../game-platform';
@@ -13,7 +13,7 @@ import {Friend} from './friend';
 @Component({
     templateUrl: 'friend-game-accounts-collection.html',
 
-    providers: [FriendService, GamePlatformsService, GameAccountsCollectionService],
+    providers: [FriendService, GamePlatformService, GameAccountService],
 })
 
 export class FriendGameAccountsCollectionComponent implements OnInit {
@@ -21,8 +21,8 @@ export class FriendGameAccountsCollectionComponent implements OnInit {
         public oidcManagerService: OidcManagerService,
         public params: RouteParams,
         private _friendService: FriendService,
-        private _gamePlatformsService: GamePlatformsService,
-        private _gameAccountsCollectionService: GameAccountsCollectionService) {
+        private _gamePlatformService: GamePlatformService,
+        private _gameAccountService: GameAccountService) {
     }
 
     public friend: Friend;
@@ -40,11 +40,11 @@ export class FriendGameAccountsCollectionComponent implements OnInit {
     }
 
     private getGamePlatforms() {
-        this._gamePlatformsService.getGamePlatforms().subscribe((gp: GamePlatform[]) => this.gamePlatforms = gp);
+        this._gamePlatformService.getGamePlatforms().subscribe((gp: GamePlatform[]) => this.gamePlatforms = gp);
     }
 
     private getGameAccounts() {
-        this._gameAccountsCollectionService.getGameAccounts(this.friend.friendUserProfile.id.toString())
+        this._gameAccountService.getGameAccounts(this.friend.friendUserProfile.id.toString())
             .subscribe(
             gameAccounts => this.friendsGameAccounts = gameAccounts,
             error => this.errorMessage = <any>error

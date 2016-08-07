@@ -4,8 +4,8 @@ import {GameAccountComponent} from './game-account.component';
 import {AddGameAccountFormComponent} from './add-game-account-form.component';
 
 import {OidcManagerService} from '../oidc-manager.service';
-import {GamePlatformsService} from '../game-platforms.service';
-import {GameAccountsCollectionService} from './game-accounts-collection.service';
+import {GamePlatformService} from '../game-platform.service';
+import {GameAccountService} from './game-account.service';
 
 import {GameAccount} from './game-account';
 import {GamePlatform} from '../game-platform';
@@ -15,14 +15,14 @@ import {GamePlatform} from '../game-platform';
 
     directives: [GameAccountComponent, AddGameAccountFormComponent],
 
-    providers: [GamePlatformsService, GameAccountsCollectionService]
+    providers: [GamePlatformService, GameAccountService]
 })
 
 export class GameAccountsCollectionComponent implements OnInit {
     constructor(
         public oidcManagerService: OidcManagerService,
-        private _gamePlatformsService: GamePlatformsService,
-        private _gameAccountsCollectionService: GameAccountsCollectionService) {
+        private _gamePlatformService: GamePlatformService,
+        private _gameAccountService: GameAccountService) {
     }
 
     public userProfileGameAccounts: GameAccount[];
@@ -37,11 +37,11 @@ export class GameAccountsCollectionComponent implements OnInit {
     public newGameAccount: GameAccount;
 
     private getGamePlatforms() {
-        this._gamePlatformsService.getGamePlatforms().subscribe((gp: GamePlatform[]) => this.gamePlatforms = gp);
+        this._gamePlatformService.getGamePlatforms().subscribe((gp: GamePlatform[]) => this.gamePlatforms = gp);
     }
 
     private getGameAccounts() {
-        this._gameAccountsCollectionService.getGameAccounts(this.oidcManagerService.OidcManager.profile.sub)
+        this._gameAccountService.getGameAccounts(this.oidcManagerService.OidcManager.profile.sub)
             .subscribe(
             gameAccounts => this.userProfileGameAccounts = gameAccounts,
             error => this.errorMessage = <any>error
@@ -49,7 +49,7 @@ export class GameAccountsCollectionComponent implements OnInit {
     }
 
     private deleteGameAccount(gameAccount: GameAccount) {
-        this._gameAccountsCollectionService.deleteAccount(this.oidcManagerService.OidcManager.profile.sub, gameAccount.id)
+        this._gameAccountService.deleteAccount(this.oidcManagerService.OidcManager.profile.sub, gameAccount.id)
             .subscribe(
             data => { },
             error => this.errorMessage = <any>error,

@@ -6,7 +6,7 @@ import {HttpClientService} from '../http-client.service';
 import {GameAccount} from './game-account';
 
 @Injectable()
-export class GameAccountsCollectionService {
+export class GameAccountService {
     private baseApiUrl = 'http://localhost:20698/api/UserProfiles/';
 
     constructor(public httpClient: HttpClientService) { }
