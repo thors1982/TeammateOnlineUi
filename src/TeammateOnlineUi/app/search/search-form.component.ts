@@ -2,19 +2,19 @@
 import {NgForm} from 'angular2/common';
 import {RouteParams, RouteData} from 'angular2/router';
 
-import {GravatarComponent} from './gravatar.component';
+import {GravatarComponent} from '../gravatar.component';
 
-import {OidcManagerService} from './oidc-manager.service';
-import {GamePlatformService} from './game-platform.service';
-import {FriendService} from './friends/friend.service';
-import {FriendRequestService} from './friends/friend-request.service';
+import {OidcManagerService} from '../oidc-manager.service';
+import {GamePlatformService} from '../game-platform.service';
+import {FriendService} from '../friends/friend.service';
+import {FriendRequestService} from '../friends/friend-request.service';
 import {SearchService} from './search.service';
 
-import {Friend} from './friends/friend';
-import {FriendRequest} from './friends/friend-request';
-import {UserProfile} from './user-profile/user-profile';
+import {Friend} from '../friends/friend';
+import {FriendRequest} from '../friends/friend-request';
+import {UserProfile} from '../user-profile/user-profile';
 import {Search} from './search';
-import {GamePlatform} from './game-platform';
+import {GamePlatform} from '../game-platform';
 
 @Component({
     selector: 'search-form',

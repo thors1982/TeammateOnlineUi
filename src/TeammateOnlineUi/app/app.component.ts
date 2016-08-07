@@ -7,7 +7,7 @@ import {FriendGameAccountsCollectionComponent} from './friends/friend-game-accou
 import {GameAccountsCollectionComponent} from './game-accounts/game-accounts-collection.component';
 import {GameAccountComponent} from './game-accounts/game-account.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
-import {SearchComponent} from './search.component';
+import {SearchComponent} from './search/search.component';
 
 import {OidcManagerService} from './oidc-manager.service';
 import {HttpClientService} from './http-client.service';
