@@ -38,7 +38,7 @@ export class GameAccountComponent implements OnInit {
 
     private getGameAccount() {
         let id = +this._routeParams.get('id');
-        
+
         this._gameAccountsCollectionService.getAccount(this.oidcManagerService.OidcManager.profile.sub, id.toString())
             .subscribe(
             gameAccount => this.gameAccount = gameAccount,

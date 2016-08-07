@@ -3,6 +3,7 @@ import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router} from 'angular2
 
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {FriendsCollectionComponent} from './friends/friends-collection.component';
+import {FriendGameAccountsCollectionComponent} from './friends/friend-game-accounts-collection.component';
 import {GameAccountsCollectionComponent} from './game-accounts/game-accounts-collection.component';
 import {GameAccountComponent} from './game-accounts/game-account.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
@@ -31,6 +32,11 @@ import {HttpClientService} from './http-client.service';
             path: '/friends',
             name: 'FriendsCollection',
             component: FriendsCollectionComponent,
+        },
+        {
+            path: '/friendsgames/:id',
+            name: 'FriendGameAccountsCollection',
+            component: FriendGameAccountsCollectionComponent
         },
         {
             path: '/game-accounts',

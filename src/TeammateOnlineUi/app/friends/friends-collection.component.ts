@@ -1,4 +1,5 @@
 ﻿import {Component, OnInit} from 'angular2/core';
+import { Router } from 'angular2/router';
 
 import {GravatarComponent} from '../gravatar.component';
 
@@ -20,6 +21,7 @@ import {FriendRequest} from './friend-request';
 export class FriendsCollectionComponent implements OnInit {
     constructor(
         public oidcManagerService: OidcManagerService,
+        public router: Router,
         private _friendsCollectionService: FriendsCollectionService, private _friendRequestsCollectionService: FriendRequestsCollectionService) {
     }
 
@@ -75,6 +77,10 @@ export class FriendsCollectionComponent implements OnInit {
 
     public ngOnInit() {
         this.updateCollections();
+    }
+
+    public viewFriendDetail(friendId: number) {
+        this.router.navigate(['/FriendGameAccountsCollection', { id: friendId.toString() }]);
     }
 
     public acceptFriendRequestSave(request: FriendRequest) {

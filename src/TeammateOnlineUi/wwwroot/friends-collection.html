@@ -8,6 +8,9 @@
                     <gravatar [email]="friend.friendUserProfile.emailAddress" [size]="25"></gravatar>
                     <strong>{{friend.friendUserProfile.firstName}} {{friend.friendUserProfile.lastName}}</strong>
                     <p>{{friend.friendUserProfile.emailAddress}}</p>
+                    <p>
+                        <a class="btn btn-default" role="button" (click)="viewFriendDetail(friend.id)">Details</a>
+                    </p>
                 </div>
             </div>
         </div>
