@@ -11,5 +11,6 @@ export class FriendRequest {
     createdDate: string;
     modifiedDate: string;
 
+    userProfile: UserProfile;
     friendUserProfile: UserProfile;
 }
