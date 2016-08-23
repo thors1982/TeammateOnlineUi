@@ -1,9 +1,9 @@
-﻿import {Injectable} from 'angular2/core';
-import {Observable} from 'rxjs/Rx';
+﻿import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 
-import {HttpClientService} from '../http-client.service';
+import { HttpClientService } from '../http-client.service';
 
-import {UserProfile} from './user-profile';
+import { UserProfile } from './user-profile';
 
 @Injectable()
 export class UserProfileService {
@@ -19,13 +19,13 @@ export class UserProfileService {
 
     public getUserProfile(userId: number): Observable<UserProfile> {
         let apiUrl = this.getDetailUrl(userId);
-        
+
         return this.httpClient.get(apiUrl);
     }
 
     public updateUserProfile(userId: number, user: UserProfile) {
         let apiUrl = this.getDetailUrl(userId);
-        
+
         return this.httpClient.put(apiUrl, user);
     }
 

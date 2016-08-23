@@ -1,14 +1,14 @@
-﻿import {Component, OnInit} from 'angular2/core';
+﻿import { Component, OnInit } from '@angular/core';
 
-import {GameAccountComponent} from './game-account.component';
-import {AddGameAccountFormComponent} from './add-game-account-form.component';
+import { GameAccountComponent } from './game-account.component';
+import { AddGameAccountFormComponent } from './add-game-account-form.component';
 
-import {OidcManagerService} from '../oidc-manager.service';
-import {GamePlatformService} from '../game-platform.service';
-import {GameAccountService} from './game-account.service';
+import { OidcManagerService } from '../oidc-manager.service';
+import { GamePlatformService } from '../game-platform.service';
+import { GameAccountService } from './game-account.service';
 
-import {GameAccount} from './game-account';
-import {GamePlatform} from '../game-platform';
+import { GameAccount } from './game-account';
+import { GamePlatform } from '../game-platform';
 
 @Component({
     templateUrl: 'game-accounts-collection.html',
@@ -45,7 +45,7 @@ export class GameAccountsCollectionComponent implements OnInit {
             .subscribe(
             gameAccounts => this.userProfileGameAccounts = gameAccounts,
             error => this.errorMessage = <any>error
-        );
+            );
     }
 
     private deleteGameAccount(gameAccount: GameAccount) {
@@ -54,7 +54,7 @@ export class GameAccountsCollectionComponent implements OnInit {
             data => { },
             error => this.errorMessage = <any>error,
             () => this.getGameAccounts()
-        );
+            );
     }
 
     private clearSelectedGameAccount() {
@@ -66,7 +66,7 @@ export class GameAccountsCollectionComponent implements OnInit {
         this.getGamePlatforms();
         this.getGameAccounts();
     }
-    
+
     public selectGameAccount(gameAccount: GameAccount) {
         this.selectedGameAccount = gameAccount;
     }
@@ -74,7 +74,7 @@ export class GameAccountsCollectionComponent implements OnInit {
     public removeGameAccount(gameAccount: GameAccount) {
         this.deleteGameAccount(gameAccount);
     }
-    
+
     public addGameAccount() {
         this.isAddingAccount = true;
     }

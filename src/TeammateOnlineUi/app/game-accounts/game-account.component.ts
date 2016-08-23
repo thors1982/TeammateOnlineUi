@@ -1,13 +1,12 @@
-﻿import {Component, OnInit, Input, Output, EventEmitter} from 'angular2/core';
-import {NgForm} from 'angular2/common';
-import {RouteParams} from 'angular2/router';
+﻿import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-import {OidcManagerService} from '../oidc-manager.service';
-import {GamePlatformService} from '../game-platform.service';
-import {GameAccountService} from  './game-account.service';
+import { OidcManagerService } from '../oidc-manager.service';
+import { GamePlatformService } from '../game-platform.service';
+import { GameAccountService } from  './game-account.service';
 
-import {GameAccount} from './game-account';
-import {GamePlatform} from '../game-platform';
+import { GameAccount } from './game-account';
+import { GamePlatform } from '../game-platform';
 
 @Component({
     selector: 'game-account',
@@ -29,7 +28,7 @@ export class GameAccountComponent implements OnInit {
         public oidcManagerService: OidcManagerService,
         private _gamePlatformService: GamePlatformService,
         private _gameAccountService: GameAccountService,
-        private _routeParams: RouteParams) {
+        private _activatedRoute: ActivatedRoute) {
     }
 
     private getGamePlatforms() {
@@ -37,13 +36,15 @@ export class GameAccountComponent implements OnInit {
     }
 
     private getGameAccount() {
-        let id = +this._routeParams.get('id');
+        this._activatedRoute.params.subscribe(params => {
+            let id = Number.parseInt(params['id']);
 
-        this._gameAccountService.getAccount(this.oidcManagerService.OidcManager.profile.sub, id)
-            .subscribe(
-            gameAccount => this.gameAccount = gameAccount,
-            error => this.errorMessage = <any>error
-        );
+            this._gameAccountService.getAccount(this.oidcManagerService.OidcManager.profile.sub, id)
+                .subscribe(
+                gameAccount => this.gameAccount = gameAccount,
+                error => this.errorMessage = <any>error
+                );
+        });
     }
 
     private updateGameAccount() {
@@ -52,7 +53,7 @@ export class GameAccountComponent implements OnInit {
             data => { },
             error => this.errorMessage = <any>error,
             () => this.sendEventToGetAccounts()
-        );
+            );
     }
 
     private sendEventToGetAccounts() {

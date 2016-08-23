@@ -1,15 +1,15 @@
 ﻿<form (ngSubmit)="addAccountSave()" #addGameAccountForm="ngForm">
-    <strong>Add new account</strong><br/>
+    <strong>Add new account</strong><br />
     <br />
     <div class="form-group">
         <label for="GamePlatform">Game platform: </label>
-        <select class="form-control" [(ngModel)]="gameAccount.gamePlatformId">
+        <select class="form-control" id="gamePlatformId" name="gamePlatformId" [(ngModel)]="gameAccount.gamePlatformId">
             <option *ngFor="let gamePlatform of gamePlatforms" value="{{gamePlatform.id}}">{{gamePlatform.name}}</option>
         </select>
     </div>
     <div class="form-group">
         <label for="userName">User name: </label>
-        <input class="form-control" required placeholder="User name" [(ngModel)]="gameAccount.userName" ngControl="userName" #name="ngForm" />
+        <input class="form-control" required placeholder="User name" id="userName" name="userName" [(ngModel)]="gameAccount.userName" />
     </div>
 
     <button type="submit" class="btn btn-default" [disabled]="!addGameAccountForm.form.valid">Submit</button>

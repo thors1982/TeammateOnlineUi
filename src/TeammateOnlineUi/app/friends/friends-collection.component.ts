@@ -1,14 +1,14 @@
-﻿import {Component, OnInit} from 'angular2/core';
-import { Router } from 'angular2/router';
+﻿import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-import {GravatarComponent} from '../gravatar.component';
+import { GravatarComponent } from '../gravatar.component';
 
-import {OidcManagerService} from '../oidc-manager.service';
-import {FriendService} from './friend.service';
-import {FriendRequestService} from './friend-request.service';
+import { OidcManagerService } from '../oidc-manager.service';
+import { FriendService } from './friend.service';
+import { FriendRequestService } from './friend-request.service';
 
-import {Friend} from './friend';
-import {FriendRequest} from './friend-request';
+import { Friend } from './friend';
+import { FriendRequest } from './friend-request';
 
 @Component({
     templateUrl: 'friends-collection.html',
@@ -31,7 +31,7 @@ export class FriendsCollectionComponent implements OnInit {
 
     public errorMessage: string = '';
 
-    public selectedFriend: Friend;    
+    public selectedFriend: Friend;
 
     private getFriends() {
         this._friendService.getFriends(this.oidcManagerService.OidcManager.profile.sub)
@@ -80,11 +80,11 @@ export class FriendsCollectionComponent implements OnInit {
     }
 
     public viewFriendDetail(friendId: number) {
-        this.router.navigate(['/FriendGameAccountsCollection', { id: friendId.toString() }]);
+        this.router.navigate(['/friendsgames', friendId.toString() ]);
     }
 
     public acceptFriendRequestSave(request: FriendRequest) {
-        this.acceptFriendRequest(request);    
+        this.acceptFriendRequest(request);
     }
 
     public declineFriendRequestSave(request: FriendRequest) {

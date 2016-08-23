@@ -1,12 +1,11 @@
-﻿import {Component, OnInit} from 'angular2/core';
-import {NgForm} from 'angular2/common';
+﻿import { Component, OnInit } from '@angular/core';
 
-import {GravatarComponent} from '../gravatar.component';
+import { GravatarComponent } from '../gravatar.component';
 
-import {OidcManagerService} from '../oidc-manager.service';
-import {UserProfileService} from './user-profile.service';
+import { OidcManagerService } from '../oidc-manager.service';
+import { UserProfileService } from './user-profile.service';
 
-import {UserProfile} from './user-profile';
+import { UserProfile } from './user-profile';
 
 @Component({
     selector: 'user-profile-form',
@@ -31,7 +30,7 @@ export class UserProfileFormComponent implements OnInit {
             .subscribe(
             user => this.userProfile = user,
             error => this.errorMessage = <any>error
-        );
+            );
     }
 
     private updateUserProfile() {

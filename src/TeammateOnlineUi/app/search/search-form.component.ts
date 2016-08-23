@@ -1,20 +1,19 @@
-﻿import {Component, OnInit} from 'angular2/core';
-import {NgForm} from 'angular2/common';
-import {RouteParams, RouteData} from 'angular2/router';
+﻿import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-import {GravatarComponent} from '../gravatar.component';
+import { GravatarComponent} from '../gravatar.component';
 
-import {OidcManagerService} from '../oidc-manager.service';
-import {GamePlatformService} from '../game-platform.service';
-import {FriendService} from '../friends/friend.service';
-import {FriendRequestService} from '../friends/friend-request.service';
-import {SearchService} from './search.service';
+import { OidcManagerService } from '../oidc-manager.service';
+import { GamePlatformService } from '../game-platform.service';
+import { FriendService } from '../friends/friend.service';
+import { FriendRequestService } from '../friends/friend-request.service';
+import { SearchService } from './search.service';
 
-import {Friend} from '../friends/friend';
-import {FriendRequest} from '../friends/friend-request';
-import {UserProfile} from '../user-profile/user-profile';
-import {Search} from './search';
-import {GamePlatform} from '../game-platform';
+import { Friend } from '../friends/friend';
+import { FriendRequest } from '../friends/friend-request';
+import { UserProfile } from '../user-profile/user-profile';
+import { Search } from './search';
+import { GamePlatform } from '../game-platform';
 
 @Component({
     selector: 'search-form',
@@ -26,11 +25,14 @@ import {GamePlatform} from '../game-platform';
 })
 
 export class SearchFormComponent implements OnInit {
-    constructor(params: RouteParams, data: RouteData, public oidcManagerService: OidcManagerService, private _searchService: SearchService, private _gamePlatformService: GamePlatformService, private _friendService: FriendService, private _friendRequestService: FriendRequestService) {
-        this.searchText = params.get('searchText');
-        if (this.searchText != null) {
-            this.searchQuery();
-        }
+    constructor(private _activatedRoute: ActivatedRoute, public oidcManagerService: OidcManagerService, private _searchService: SearchService, private _gamePlatformService: GamePlatformService, private _friendService: FriendService, private _friendRequestService: FriendRequestService) {
+
+        this._activatedRoute.params.subscribe(params => {
+            this.searchText = params['searchText'];
+            if (this.searchText != null) {
+                this.searchQuery();
+            }
+        });
     }
 
     public gamePlatforms: GamePlatform[];
@@ -48,7 +50,7 @@ export class SearchFormComponent implements OnInit {
     private searchQuery() {
         this._searchService.query(this.searchText).subscribe((s: Search) => this.completedSearch = s);
     }
-    
+
     private addFriendRequest(newFriendId: number) {
         let newFriendRequest = new FriendRequest();
         newFriendRequest.userProfileId = +this.oidcManagerService.OidcManager.profile.sub;

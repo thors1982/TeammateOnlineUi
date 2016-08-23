@@ -1,10 +1,11 @@
-﻿import {Injectable} from 'angular2/core';
-import {Http, Response, RequestOptions, Headers, Request, RequestMethod} from 'angular2/http';
-import {Observable} from 'rxjs/Rx';
+﻿import { Injectable } from '@angular/core';
+import { Http, Response, Headers, RequestOptions, Request, RequestMethod } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/Rx';
 
-import {OidcManagerService} from './oidc-manager.service';
+import { OidcManagerService } from './oidc-manager.service';
 
-import {UserProfile} from './user-profile/user-profile';
+import { UserProfile } from './user-profile/user-profile';
 
 @Injectable()
 export class HttpClientService {
@@ -14,7 +15,7 @@ export class HttpClientService {
     public get(url: string) {
         return this.http.get(url, {
             headers: this.getHeaders()
-            })
+        })
             .map((response: Response) => response.json())
             .do(data => console.log(data))
             .catch(this.handleError);
@@ -23,7 +24,7 @@ export class HttpClientService {
     public post(url: string, data: any) {
         return this.http.post(url, JSON.stringify(data), {
             headers: this.getHeaders()
-            })
+        })
             .map(res => res.json())
             .do(data => console.log(data))
             .catch(this.handleError);
@@ -32,7 +33,7 @@ export class HttpClientService {
     public put(url: string, data: any) {
         return this.http.put(url, JSON.stringify(data), {
             headers: this.getHeaders()
-            })
+        })
             //.map(res => res.json())
             .do(data => console.log(data))
             .catch(this.handleError);
@@ -41,7 +42,7 @@ export class HttpClientService {
     public delete(url: string) {
         return this.http.delete(url, {
             headers: this.getHeaders()
-            })
+        })
             //.map(res => res.json())
             .do(data => console.log(data))
             .catch(this.handleError);
@@ -56,9 +57,11 @@ export class HttpClientService {
     }
 
     private handleError(error: any) {
-        // in a real world app, we may send the error to some remote logging infrastructure
-        // instead of just logging it to the console
-        console.error(error);
-        return Observable.throw(error.json().error || 'Server error');
+        // In a real world app, we might use a remote logging infrastructure
+        // We'd also dig deeper into the error to get a better message
+        let errMsg = (error.message) ? error.message : error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        console.error(errMsg); // log to console instead
+
+        return Observable.throw(errMsg);
     }
 }

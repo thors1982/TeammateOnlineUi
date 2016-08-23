@@ -1,16 +1,16 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
-    "noImplicitAny": true,
-    "noEmitOnError": true,
-    "removeComments": false,
-    "sourceMap": true,
     "target": "es5",
-    "module": "system",
+    "module": "commonjs",
     "moduleResolution": "node",
+    "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "outDir": "wwwroot/app/"
+    "removeComments": false,
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "outDir": "./wwwroot/app/"
   },
   "exclude": [
     "node_modules",

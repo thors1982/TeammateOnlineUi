@@ -1,9 +1,9 @@
-﻿import {Injectable} from 'angular2/core';
-import {Observable} from 'rxjs/Rx';
+﻿import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 
-import {HttpClientService} from '../http-client.service';
+import { HttpClientService } from '../http-client.service';
 
-import {Friend} from './friend';
+import { Friend } from './friend';
 
 @Injectable()
 export class FriendService {

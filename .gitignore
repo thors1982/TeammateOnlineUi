@@ -315,3 +315,7 @@ src/TeammateOnlineUi/wwwroot/app/
 # Our npm libraries in the www root
 # =========================
 src/TeammateOnlineUi/wwwroot/lib/
+
+# Typings
+# =========================
+src/TeammateOnlineUi/typings

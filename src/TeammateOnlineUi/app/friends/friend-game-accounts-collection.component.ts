@@ -1,14 +1,14 @@
-﻿import {Component, OnInit} from 'angular2/core';
-import {RouteParams, RouteData} from 'angular2/router';
+﻿import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-import {OidcManagerService} from '../oidc-manager.service';
-import {FriendService} from './friend.service';
-import {GamePlatformService} from '../game-platform.service';
-import {GameAccountService} from '../game-accounts/game-account.service';
+import { OidcManagerService } from '../oidc-manager.service';
+import { FriendService } from './friend.service';
+import { GamePlatformService } from '../game-platform.service';
+import { GameAccountService } from '../game-accounts/game-account.service';
 
-import {GameAccount} from '../game-accounts/game-account';
-import {GamePlatform} from '../game-platform';
-import {Friend} from './friend';
+import { GameAccount } from '../game-accounts/game-account';
+import { GamePlatform } from '../game-platform';
+import { Friend } from './friend';
 
 @Component({
     templateUrl: 'friend-game-accounts-collection.html',
@@ -19,7 +19,7 @@ import {Friend} from './friend';
 export class FriendGameAccountsCollectionComponent implements OnInit {
     constructor(
         public oidcManagerService: OidcManagerService,
-        public params: RouteParams,
+        private _activatedRoute: ActivatedRoute,
         private _friendService: FriendService,
         private _gamePlatformService: GamePlatformService,
         private _gameAccountService: GameAccountService) {
@@ -52,8 +52,12 @@ export class FriendGameAccountsCollectionComponent implements OnInit {
     }
 
     public ngOnInit() {
-        let friendId = this.params.get('id');
-        this.getFriend(+friendId);
+        this._activatedRoute.params.subscribe(params => {
+            let friendId = Number.parseInt(params['id']);
+
+            this.getFriend(+friendId);
+        });
+
         this.getGamePlatforms();
     }
 }

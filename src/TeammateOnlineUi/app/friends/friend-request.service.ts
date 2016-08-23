@@ -1,9 +1,9 @@
-﻿import {Injectable} from 'angular2/core';
-import {Observable} from 'rxjs/Rx';
+﻿import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 
-import {HttpClientService} from '../http-client.service';
+import { HttpClientService } from '../http-client.service';
 
-import {FriendRequest} from './friend-request';
+import { FriendRequest } from './friend-request';
 
 @Injectable()
 export class FriendRequestService {
@@ -28,7 +28,7 @@ export class FriendRequestService {
 
         return this.httpClient.put(apiUrl, friendRequest);
     }
-    
+
     public deleteFriendRequest(userId: number, friendRequestId: number) {
         let apiUrl = this.getDetailUrl(userId, friendRequestId);
 

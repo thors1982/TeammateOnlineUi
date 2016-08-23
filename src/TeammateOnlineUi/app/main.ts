@@ -1,11 +1,5 @@
-﻿/// <reference path="../node_modules/angular2/typings/browser.d.ts" />
+﻿// main entry point
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app.module';
 
-import {bootstrap} from 'angular2/platform/browser';
-import {HTTP_PROVIDERS} from 'angular2/http';
-import {AppComponent} from './app.component';
-import 'rxjs/Rx';
-
-import {OidcManagerService} from './oidc-manager.service';
-
-
-bootstrap(AppComponent, [HTTP_PROVIDERS, OidcManagerService]);
+platformBrowserDynamic().bootstrapModule(AppModule);

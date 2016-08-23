@@ -1,26 +1,17 @@
-﻿import {Injectable} from 'angular2/core';
-import {Http, Response, RequestOptions, Headers, Request, RequestMethod} from 'angular2/http';
-import {Observable} from 'rxjs/Rx';
+﻿import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 
-import {GamePlatform} from './game-platform';
+import { HttpClientService } from './http-client.service';
+
+import { GamePlatform } from './game-platform';
 
 @Injectable()
 export class GamePlatformService {
     private apiUrl = 'http://localhost:20698/api/gameplatforms';
-    
-    constructor(public http: Http) { }
+
+    constructor(public httpClient: HttpClientService) { }
 
     public getGamePlatforms() {
-        return this.http.get(this.apiUrl)
-            .map((response: Response) => <GamePlatform[]>response.json())
-            .do((data: any) => console.log(data))
-            .catch(this.handleError);
-    }
-
-    private handleError(error: any) {
-        // in a real world app, we may send the error to some remote logging infrastructure
-        // instead of just logging it to the console
-        console.error(error);
-        return Observable.throw(error.json().error || 'Server error');
+        return this.httpClient.get(this.apiUrl);
     }
 }

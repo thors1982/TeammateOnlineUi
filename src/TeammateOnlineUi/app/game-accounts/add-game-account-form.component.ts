@@ -1,12 +1,11 @@
-﻿import {Component, OnInit, Input, Output, EventEmitter} from 'angular2/core';
-import {NgForm} from 'angular2/common';
+﻿import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import {OidcManagerService} from '../oidc-manager.service';
-import {GamePlatformService} from '../game-platform.service';
-import {GameAccountService} from  './game-account.service';
+import { OidcManagerService } from '../oidc-manager.service';
+import { GamePlatformService } from '../game-platform.service';
+import { GameAccountService } from  './game-account.service';
 
-import {GameAccount} from './game-account';
-import {GamePlatform} from '../game-platform';
+import { GameAccount } from './game-account';
+import { GamePlatform } from '../game-platform';
 
 @Component({
     selector: 'add-game-account-form',
@@ -38,7 +37,7 @@ export class AddGameAccountFormComponent implements OnInit {
             data => { },
             error => this.errorMessage = <any>error,
             () => this.sendEventToGetAccounts()
-        );
+            );
     }
 
     private sendEventToGetAccounts() {

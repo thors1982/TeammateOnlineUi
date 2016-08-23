@@ -5,17 +5,17 @@
             <form (ngSubmit)="profileSave()" #userProfileForm="ngForm">
                 <div class="form-group">
                     <label for="firstName">First name</label>
-                    <input type="text" class="form-control" required [(ngModel)]="userProfile.firstName" ngControl="firstName" #name="ngForm">
+                    <input id="firstName" name="firstName" type="text" class="form-control" required [(ngModel)]="userProfile.firstName">
                 </div>
                 <div class="form-group">
                     <label for="lastName">Last name</label>
-                    <input type="text" class="form-control" required [(ngModel)]="userProfile.lastName" ngControl="lastName" #name="ngForm">
+                    <input id="lastName" name="lastName" type="text" class="form-control" required [(ngModel)]="userProfile.lastName">
                 </div>
                 <div class="form-group">
                     <label for="emailAddress">Email address</label>
-                    <input type="text" class="form-control" required [(ngModel)]="userProfile.emailAddress" ngControl="emailAddress" #name="ngForm">
+                    <input id="emailAddress" name="emailAddress" type="text" class="form-control" required [(ngModel)]="userProfile.emailAddress">
                 </div>
-            
+
                 <button type="submit" class="btn btn-default" [disabled]="!userProfileForm.form.valid">Submit</button>
             </form>
 

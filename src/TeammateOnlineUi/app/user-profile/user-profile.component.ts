@@ -1,6 +1,6 @@
-﻿import {Component, OnInit} from 'angular2/core';
+﻿import { Component, OnInit } from '@angular/core';
 
-import {UserProfileFormComponent} from './user-profile-form.component';
+import { UserProfileFormComponent } from './user-profile-form.component';
 
 @Component({
     templateUrl: 'user-profile.html',

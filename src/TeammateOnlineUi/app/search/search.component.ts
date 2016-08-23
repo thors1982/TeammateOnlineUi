@@ -1,6 +1,6 @@
-﻿import {Component, OnInit} from 'angular2/core';
+﻿import { Component, OnInit } from '@angular/core';
 
-import {SearchFormComponent} from './search-form.component';
+import { SearchFormComponent } from './search-form.component';
 
 @Component({
     templateUrl: 'search.html',
