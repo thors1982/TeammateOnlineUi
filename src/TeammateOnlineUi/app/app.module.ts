@@ -17,6 +17,7 @@ import { AuthComponent } from './auth.component';
 
 import { OidcManagerService } from './oidc-manager.service';
 import { HttpClientService } from './http-client.service';
+import { AuthorizationGuard } from './authorization.guard';
 
 import { routing } from './app.routing';
 
@@ -44,7 +45,8 @@ import { routing } from './app.routing';
     ],
     providers: [
         OidcManagerService,
-        HttpClientService
+        HttpClientService,
+        AuthorizationGuard
     ],
     bootstrap: [AppComponent]
 })

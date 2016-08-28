@@ -57,4 +57,8 @@ export class OidcManagerService {
         this.OidcManager._settings.acr_values = "idp:Facebook";
         this.OidcManager.redirectForToken();
     }
+
+    public isLoggedIn() {
+        return !this.OidcManager.expired;
+    }
 }

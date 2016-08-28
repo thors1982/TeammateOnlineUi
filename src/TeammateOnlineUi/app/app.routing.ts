@@ -9,6 +9,8 @@ import { FriendGameAccountsCollectionComponent } from './friends/friend-game-acc
 import { SearchComponent } from './search/search.component';
 import { AuthComponent } from './auth.component';
 
+import { AuthorizationGuard } from './authorization.guard';
+
 
 const appRoutes: Routes = [
     {
@@ -17,31 +19,38 @@ const appRoutes: Routes = [
     },
     {
         path: 'user-profile',
-        component: UserProfileComponent
+        component: UserProfileComponent,
+        canActivate: [AuthorizationGuard]
     },
     {
         path: 'game-accounts',
-        component: GameAccountsCollectionComponent
+        component: GameAccountsCollectionComponent,
+        canActivate: [AuthorizationGuard]
     },
     {
         path: 'game-accounts/:id',
-        component: GameAccountComponent
+        component: GameAccountComponent,
+        canActivate: [AuthorizationGuard]
     },
     {
         path: 'friends',
         component: FriendsCollectionComponent,
+        canActivate: [AuthorizationGuard]
     },
     {
         path: 'friendsgames/:id',
-        component: FriendGameAccountsCollectionComponent
+        component: FriendGameAccountsCollectionComponent,
+        canActivate: [AuthorizationGuard]
     },
     {
         path: 'search',
-        component: SearchComponent
+        component: SearchComponent,
+        canActivate: [AuthorizationGuard]
     },
     {
         path: 'search:searchText',
-        component: SearchComponent
+        component: SearchComponent,
+        canActivate: [AuthorizationGuard]
     },
     {
         path: 'auth/:func',
