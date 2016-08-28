@@ -7,6 +7,7 @@ import { GameAccountComponent } from './game-accounts/game-account.component';
 import { FriendsCollectionComponent } from './friends/friends-collection.component';
 import { FriendGameAccountsCollectionComponent } from './friends/friend-game-accounts-collection.component';
 import { SearchComponent } from './search/search.component';
+import { AuthComponent } from './auth.component';
 
 
 const appRoutes: Routes = [
@@ -41,6 +42,10 @@ const appRoutes: Routes = [
     {
         path: 'search:searchText',
         component: SearchComponent
+    },
+    {
+        path: 'auth/:func',
+        component: AuthComponent
     },
     {
         path: '',

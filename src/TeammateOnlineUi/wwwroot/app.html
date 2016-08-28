@@ -39,7 +39,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a routerLink="/user-profile" routerLinkActive="active">Profile</a></li>
-                        <li><a href="javascript:;" (click)="logout()">Sign out</a></li>
+                        <li><a [routerLink]="['/auth/logout']">Sign out</a></li>
                     </ul>
                 </li>
 
@@ -48,8 +48,8 @@
                         Sign in <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="javascript:;" (click)="loginWithGoogle()">Sign in with Google</a></li>
-                        <li><a href="javascript:;" (click)="loginWithFacebook()">Sign in with Facebook</a></li>
+                        <li><a [routerLink]="['/auth/google-login']">Sign in with Google</a></li>
+                        <li><a [routerLink]="['/auth/facebook-login']">Sign in with Facebook</a></li>
                     </ul>
                 </li>
             </ul>

@@ -9,8 +9,6 @@ import { OidcManagerService } from './oidc-manager.service';
 })
 
 export class AppComponent {
-    public OidcManager: any;
-
     public globalSearchText: string;
 
     constructor(private oidcManagerService: OidcManagerService, private router: Router) { }
@@ -22,18 +20,5 @@ export class AppComponent {
     }
 
     public ngOnInit() {
-        this.oidcManagerService.checkForOauthCallback();
-    }
-    
-    public logout() {
-        this.oidcManagerService.logout();
-    }
-
-    public loginWithGoogle() {
-        this.oidcManagerService.loginWithGoogle();
-    }
-
-    public loginWithFacebook() {
-        this.oidcManagerService.loginWithFacebook();
     }
 }

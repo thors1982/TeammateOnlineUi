@@ -13,6 +13,7 @@ import { GameAccountComponent } from './game-accounts/game-account.component';
 import { FriendsCollectionComponent } from './friends/friends-collection.component';
 import { FriendGameAccountsCollectionComponent } from './friends/friend-game-accounts-collection.component';
 import { SearchComponent } from './search/search.component';
+import { AuthComponent } from './auth.component';
 
 import { OidcManagerService } from './oidc-manager.service';
 import { HttpClientService } from './http-client.service';
@@ -38,7 +39,8 @@ import { routing } from './app.routing';
         GameAccountComponent,
         FriendsCollectionComponent,
         FriendGameAccountsCollectionComponent,
-        SearchComponent
+        SearchComponent,
+        AuthComponent
     ],
     providers: [
         OidcManagerService,

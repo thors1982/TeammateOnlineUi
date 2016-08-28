@@ -9,7 +9,7 @@ export class OidcManagerService {
     constructor() {
         let config = {
             client_id: "TeammateOnlineUi",
-            redirect_uri: "http://localhost:59505/oauth-callback",
+            redirect_uri: "http://localhost:59505/auth/callback",
             response_type: "id_token token",
             scope: "openid profile email",
             authority: "http://localhost:31482/",
@@ -24,7 +24,7 @@ export class OidcManagerService {
         if (window.location.hash) {
             let config = {
                 client_id: "TeammateOnlineUi",
-                redirect_uri: "http://localhost:59505/oauth-callback",
+                redirect_uri: "http://localhost:59505/auth/callback",
                 response_type: "id_token token",
                 load_user_profule: false,
                 authority: "http://localhost:31482/",
