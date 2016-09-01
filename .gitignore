@@ -306,7 +306,7 @@ $RECYCLE.BIN/
 
 # Configs
 # =========================
-src/TeammateOnlineUi/config.Development.json
+src/TeammateOnlineUi/appsettings.Development.json
 
 # Typescript compiled code in the www root
 # =========================
