@@ -40,6 +40,9 @@
     "fs": "^0.0.2",
     "gulp-concat": "^2.6.0",
     "gulp-typescript": "^2.13.1",
-    "gulp-tsc": "^1.1.5"
+    "gulp-tsc": "^1.1.5",
+
+    "gulp-livereload": "3.8.1",
+    "gulp-watch": "4.3.9"
   }
 }

@@ -6,6 +6,7 @@ Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
 
 var gulp = require('gulp');
 var clean = require('gulp-clean');
+var livereload = require('gulp-livereload');
 
 var paths = {
     appDest: "./wwwroot/app",
@@ -78,6 +79,18 @@ gulp.task("cleanAppFolder", function () {
     return gulp.src(paths.appDest).pipe(clean()); // Delete everything in 'wwwroot/app'
 });
 
+// Live reload for browser
+gulp.task('liveReload', function () {
+    // Change the filepath, when you want to live reload a different page in your project.
+    livereload.reload("./wwwroot/index.html");
+});
+// This task should be run, when you want to reload the webpage, when files change on disk.
+gulp.task('reloadWatch', function () {
+    livereload.listen();
+    //gulp.watch('./Client/**/*.js', ['reload']);
+    gulp.watch(['./wwwroot/app/**/*.js', './wwwroot/**/*.html'], ['liveReload']);
+});
+
 gulp.task('clean', ['cleanLibsFolder']);
 
-gulp.task('default', ['moveNpmFiles']);
+gulp.task('default', ['moveNpmFiles', 'reloadWatch']);
