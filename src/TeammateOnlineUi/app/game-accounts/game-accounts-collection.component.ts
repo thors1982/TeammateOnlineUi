@@ -13,8 +13,6 @@ import { GamePlatform } from '../game-platform';
 @Component({
     templateUrl: 'game-accounts-collection.html',
 
-    directives: [GameAccountComponent, AddGameAccountFormComponent],
-
     providers: [GamePlatformService, GameAccountService]
 })
 

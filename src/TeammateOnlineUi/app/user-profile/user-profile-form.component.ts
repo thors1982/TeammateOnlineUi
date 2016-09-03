@@ -12,8 +12,6 @@ import { UserProfile } from './user-profile';
     templateUrl: 'user-profile-form.component.html',
 
     providers: [UserProfileService],
-
-    directives: [GravatarComponent]
 })
 
 export class UserProfileFormComponent implements OnInit {

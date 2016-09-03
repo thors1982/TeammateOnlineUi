@@ -10,9 +10,11 @@ import { UserProfileComponent }  from './user-profile/user-profile.component';
 import { UserProfileFormComponent } from './user-profile/user-profile-form.component';
 import { GameAccountsCollectionComponent } from './game-accounts/game-accounts-collection.component';
 import { GameAccountComponent } from './game-accounts/game-account.component';
+import { AddGameAccountFormComponent } from './game-accounts/add-game-account-form.component';
 import { FriendsCollectionComponent } from './friends/friends-collection.component';
 import { FriendGameAccountsCollectionComponent } from './friends/friend-game-accounts-collection.component';
 import { SearchComponent } from './search/search.component';
+import { SearchFormComponent } from './search/search-form.component';
 import { AuthComponent } from './auth.component';
 
 import { OidcManagerService } from './oidc-manager.service';
@@ -38,9 +40,11 @@ import { routing } from './app.routing';
         UserProfileFormComponent,
         GameAccountsCollectionComponent,
         GameAccountComponent,
+        AddGameAccountFormComponent,
         FriendsCollectionComponent,
         FriendGameAccountsCollectionComponent,
         SearchComponent,
+        SearchFormComponent,
         AuthComponent
     ],
     providers: [

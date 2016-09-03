@@ -19,9 +19,7 @@ import { GamePlatform } from '../game-platform';
     selector: 'search-form',
     templateUrl: 'search-form.component.html',
 
-    providers: [SearchService, FriendService, GamePlatformService, FriendRequestService],
-
-    directives: [GravatarComponent]
+    providers: [SearchService, FriendService, GamePlatformService, FriendRequestService]
 })
 
 export class SearchFormComponent implements OnInit {

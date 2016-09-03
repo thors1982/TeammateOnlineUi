@@ -13,9 +13,7 @@ import { FriendRequest } from './friend-request';
 @Component({
     templateUrl: 'friends-collection.html',
 
-    providers: [FriendService, FriendRequestService],
-
-    directives: [GravatarComponent]
+    providers: [FriendService, FriendRequestService]
 })
 
 export class FriendsCollectionComponent implements OnInit {
