@@ -52,7 +52,7 @@ export class GameAccountService {
 
     private getDetailUrl(userId: number, gameAccountId: number): string {
         let apiUrl = this.getCollectionUrl(userId);
-        apiUrl = apiUrl + '/' + gameAccountId.toString()
+        apiUrl = apiUrl + '/' + gameAccountId.toString();
 
         return apiUrl;
     }

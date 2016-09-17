@@ -44,7 +44,7 @@ export class FriendRequestService {
 
     private getDetailUrl(userId: number, friendRequestId: number): string {
         let apiUrl = this.getCollectionUrl(userId);
-        apiUrl = apiUrl + '/' + friendRequestId.toString()
+        apiUrl = apiUrl + '/' + friendRequestId.toString();
 
         return apiUrl;
     }

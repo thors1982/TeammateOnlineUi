@@ -35,7 +35,7 @@ export class UserProfileService {
 
     private getDetailUrl(userId: number): string {
         let apiUrl = this.getCollectionUrl();
-        apiUrl = apiUrl + '/' + userId.toString()
+        apiUrl = apiUrl + '/' + userId.toString();
 
         return apiUrl;
     }
