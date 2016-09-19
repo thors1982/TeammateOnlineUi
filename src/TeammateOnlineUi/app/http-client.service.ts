@@ -5,14 +5,12 @@ import 'rxjs/Rx';
 
 import { OidcManagerService } from './oidc-manager.service';
 
-import { UserProfile } from './user-profile/user-profile';
-
 @Injectable()
 export class HttpClientService {
 
     constructor(public oidcManagerService: OidcManagerService, public http: Http) { }
 
-    public get(url: string) {
+    public get(url: string): Observable<any> {
         return this.http.get(url, {
             headers: this.getHeaders()
         })
@@ -21,7 +19,7 @@ export class HttpClientService {
             .catch(this.handleError);
     }
 
-    public post(url: string, data: any) {
+    public post(url: string, data: any): Observable<any> {
         return this.http.post(url, JSON.stringify(data), {
             headers: this.getHeaders()
         })
@@ -30,25 +28,25 @@ export class HttpClientService {
             .catch(this.handleError);
     }
 
-    public put(url: string, data: any) {
+    public put(url: string, data: any): Observable<any> {
         return this.http.put(url, JSON.stringify(data), {
             headers: this.getHeaders()
         })
-            //.map(res => res.json())
+            ////.map(res => res.json())
             .do(data => console.log(data))
             .catch(this.handleError);
     }
 
-    public delete(url: string) {
+    public delete(url: string): Observable<any> {
         return this.http.delete(url, {
             headers: this.getHeaders()
         })
-            //.map(res => res.json())
+            ////.map(res => res.json())
             .do(data => console.log(data))
             .catch(this.handleError);
     }
 
-    private getHeaders() {
+    private getHeaders(): Headers {
         let header = new Headers();
         header.append('Authorization', 'Bearer ' + this.oidcManagerService.OidcManager.access_token);
         header.append('Content-Type', 'application/ json');
