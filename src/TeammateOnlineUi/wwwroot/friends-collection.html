@@ -27,19 +27,16 @@
         <div class="col-xs-6 col-md-3" *ngFor="let friendRequest of friendRequests">
             <div class="thumbnail">
                 <div class="caption">
+                    <gravatar [email]="friendRequest.friendUserProfile.emailAddress" [size]="25"></gravatar>
+                    <strong>{{friendRequest.friendUserProfile.firstName}} {{friendRequest.friendUserProfile.lastName}}</strong>
+                    <p>{{friendRequest.friendUserProfile.emailAddress}}</p>
                     <div *ngIf="friendRequest.isIncomingRequest">
-                        <gravatar [email]="friendRequest.userProfile.emailAddress" [size]="25"></gravatar>
-                        <strong>{{friendRequest.userProfile.firstName}} {{friendRequest.userProfile.lastName}}</strong>
-                        <p>{{friendRequest.userProfile.emailAddress}}</p>
                         <p>
                             <a class="btn btn-primary" role="button" (click)="acceptFriendRequestSave(friendRequest)">Accept</a>
                             <a class="btn btn-default" role="button" (click)="declineFriendRequestSave(friendRequest)">Decline</a>
                         </p>
                     </div>
                     <div *ngIf="!friendRequest.isIncomingRequest">
-                        <gravatar [email]="friendRequest.friendUserProfile.emailAddress" [size]="25"></gravatar>
-                        <strong>{{friendRequest.friendUserProfile.firstName}} {{friendRequest.friendUserProfile.lastName}}</strong>
-                        <p>{{friendRequest.friendUserProfile.emailAddress}}</p>
                         <p>Waiting for a response... <a class="btn btn-default" role="button" (click)="declineFriendRequestSave(friendRequest)">Cancel</a></p>
                     </div>
                 </div>
