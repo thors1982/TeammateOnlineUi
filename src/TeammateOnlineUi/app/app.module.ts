@@ -10,6 +10,7 @@ import { UserProfileComponent }  from './user-profile/user-profile.component';
 import { UserProfileFormComponent } from './user-profile/user-profile-form.component';
 import { GameAccountsCollectionComponent } from './game-accounts/game-accounts-collection.component';
 import { GameAccountComponent } from './game-accounts/game-account.component';
+import { FriendsAccountsComponent } from './game-accounts/friends-accounts.component';
 import { AddGameAccountFormComponent } from './game-accounts/add-game-account-form.component';
 import { FriendsCollectionComponent } from './friends/friends-collection.component';
 import { FriendGameAccountsCollectionComponent } from './friends/friend-game-accounts-collection.component';
@@ -41,6 +42,7 @@ import { routing } from './app.routing';
         UserProfileFormComponent,
         GameAccountsCollectionComponent,
         GameAccountComponent,
+        FriendsAccountsComponent,
         AddGameAccountFormComponent,
         FriendsCollectionComponent,
         FriendGameAccountsCollectionComponent,

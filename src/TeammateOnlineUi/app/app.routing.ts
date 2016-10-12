@@ -4,6 +4,7 @@ import { DashboardComponent }  from './dashboard/dashboard.component';
 import { UserProfileComponent }  from './user-profile/user-profile.component';
 import { GameAccountsCollectionComponent } from './game-accounts/game-accounts-collection.component';
 import { GameAccountComponent } from './game-accounts/game-account.component';
+import { FriendsAccountsComponent } from './game-accounts/friends-accounts.component';
 import { FriendsCollectionComponent } from './friends/friends-collection.component';
 import { FriendGameAccountsCollectionComponent } from './friends/friend-game-accounts-collection.component';
 import { SearchComponent } from './search/search.component';
@@ -30,6 +31,11 @@ const appRoutes: Routes = [
     {
         path: 'game-accounts/:id',
         component: GameAccountComponent,
+        canActivate: [AuthorizationGuard]
+    },
+    {
+        path: 'game-accounts/:id/friends',
+        component: FriendsAccountsComponent,
         canActivate: [AuthorizationGuard]
     },
     {

@@ -1,4 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { GameAccountComponent } from './game-account.component';
 import { AddGameAccountFormComponent } from './add-game-account-form.component';
@@ -20,6 +21,7 @@ import { GamePlatform } from '../game-platform';
 export class GameAccountsCollectionComponent implements OnInit {
     constructor(
         public oidcManagerService: OidcManagerService,
+        public router: Router,
         private _gamePlatformService: GamePlatformService,
         private _gameAccountService: GameAccountService,
         private alertMessageService: AlertMessageService) {
@@ -75,6 +77,10 @@ export class GameAccountsCollectionComponent implements OnInit {
 
     public removeGameAccount(gameAccount: GameAccount) {
         this.deleteGameAccount(gameAccount);
+    }
+
+    public viewFriendsAccounts(gameAccount: GameAccount) {
+        this.router.navigate(['/game-accounts/' + gameAccount.id.toString() + '/friends',]);
     }
 
     public addGameAccount() {
