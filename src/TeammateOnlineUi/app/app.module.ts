@@ -10,6 +10,7 @@ import { UserProfileComponent }  from './user-profile/user-profile.component';
 import { UserProfileFormComponent } from './user-profile/user-profile-form.component';
 import { GameAccountsCollectionComponent } from './game-accounts/game-accounts-collection.component';
 import { GameAccountComponent } from './game-accounts/game-account.component';
+import { FriendsAccountsComponent } from './game-accounts/friends-accounts.component';
 import { AddGameAccountFormComponent } from './game-accounts/add-game-account-form.component';
 import { FriendsCollectionComponent } from './friends/friends-collection.component';
 import { FriendGameAccountsCollectionComponent } from './friends/friend-game-accounts-collection.component';
@@ -20,6 +21,7 @@ import { AuthComponent } from './auth.component';
 import { OidcManagerService } from './oidc-manager.service';
 import { HttpClientService } from './http-client.service';
 import { AuthorizationGuard } from './authorization.guard';
+import { AlertMessageService } from './alert-message.service';
 
 import { routing } from './app.routing';
 
@@ -40,6 +42,7 @@ import { routing } from './app.routing';
         UserProfileFormComponent,
         GameAccountsCollectionComponent,
         GameAccountComponent,
+        FriendsAccountsComponent,
         AddGameAccountFormComponent,
         FriendsCollectionComponent,
         FriendGameAccountsCollectionComponent,
@@ -50,7 +53,8 @@ import { routing } from './app.routing';
     providers: [
         OidcManagerService,
         HttpClientService,
-        AuthorizationGuard
+        AuthorizationGuard,
+        AlertMessageService
     ],
     bootstrap: [AppComponent]
 })

@@ -3,6 +3,7 @@
 import { OidcManagerService } from '../oidc-manager.service';
 import { GamePlatformService } from '../game-platform.service';
 import { GameAccountService } from  './game-account.service';
+import { AlertMessageService } from '../alert-message.service';
 
 import { GameAccount } from './game-account';
 import { GamePlatform } from '../game-platform';
@@ -18,13 +19,12 @@ export class AddGameAccountFormComponent implements OnInit {
 
     @Output()
     getGameAccounts = new EventEmitter();
-
-    public errorMessage: string = '';
-
+    
     constructor(
         public oidcManagerService: OidcManagerService,
         private _gamePlatformService: GamePlatformService,
-        private _gameAccountService: GameAccountService) {
+        private _gameAccountService: GameAccountService,
+        private alertMessageService: AlertMessageService) {
     }
 
     private getGamePlatforms() {
@@ -35,7 +35,7 @@ export class AddGameAccountFormComponent implements OnInit {
         this._gameAccountService.createGameAccount(this.oidcManagerService.OidcManager.profile.sub, this.gameAccount)
             .subscribe(
             data => { },
-            error => this.errorMessage = <any>error,
+            error => this.alertMessageService.addMessage('error', <any>error),
             () => this.sendEventToGetAccounts()
             );
     }

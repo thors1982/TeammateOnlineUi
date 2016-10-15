@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { OidcManagerService } from '../oidc-manager.service';
 import { GamePlatformService } from '../game-platform.service';
 import { GameAccountService } from  './game-account.service';
+import { AlertMessageService } from '../alert-message.service';
 
 import { GameAccount } from './game-account';
 import { GamePlatform } from '../game-platform';
@@ -21,18 +22,21 @@ export class GameAccountComponent implements OnInit {
 
     @Output()
     clearSelectedGameAccount = new EventEmitter();
-
-    public errorMessage: string = '';
-
+    
     constructor(
         public oidcManagerService: OidcManagerService,
         private _gamePlatformService: GamePlatformService,
         private _gameAccountService: GameAccountService,
-        private _activatedRoute: ActivatedRoute) {
+        private _activatedRoute: ActivatedRoute,
+        private alertMessageService: AlertMessageService) {
     }
 
     private getGamePlatforms() {
-        this._gamePlatformService.getGamePlatforms().subscribe((gp: GamePlatform[]) => this.gamePlatforms = gp);
+        this._gamePlatformService.getGamePlatforms()
+            .subscribe(
+            (gp: GamePlatform[]) => this.gamePlatforms = gp,
+            error => this.alertMessageService.addMessage('error', <any>error)
+            );
     }
 
     private getGameAccount() {
@@ -42,7 +46,7 @@ export class GameAccountComponent implements OnInit {
             this._gameAccountService.getAccount(this.oidcManagerService.OidcManager.profile.sub, id)
                 .subscribe(
                 gameAccount => this.gameAccount = gameAccount,
-                error => this.errorMessage = <any>error
+                error => this.alertMessageService.addMessage('error', <any>error)
                 );
         });
     }
@@ -51,7 +55,7 @@ export class GameAccountComponent implements OnInit {
         this._gameAccountService.updateAccount(this.oidcManagerService.OidcManager.profile.sub, +this.gameAccount.id, this.gameAccount)
             .subscribe(
             data => { },
-            error => this.errorMessage = <any>error,
+            error => this.alertMessageService.addMessage('error', <any>error),
             () => this.sendEventToGetAccounts()
             );
     }

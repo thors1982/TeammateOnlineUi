@@ -1,4 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { GameAccountComponent } from './game-account.component';
 import { AddGameAccountFormComponent } from './add-game-account-form.component';
@@ -6,6 +7,7 @@ import { AddGameAccountFormComponent } from './add-game-account-form.component';
 import { OidcManagerService } from '../oidc-manager.service';
 import { GamePlatformService } from '../game-platform.service';
 import { GameAccountService } from './game-account.service';
+import { AlertMessageService } from '../alert-message.service';
 
 import { GameAccount } from './game-account';
 import { GamePlatform } from '../game-platform';
@@ -19,15 +21,15 @@ import { GamePlatform } from '../game-platform';
 export class GameAccountsCollectionComponent implements OnInit {
     constructor(
         public oidcManagerService: OidcManagerService,
+        public router: Router,
         private _gamePlatformService: GamePlatformService,
-        private _gameAccountService: GameAccountService) {
+        private _gameAccountService: GameAccountService,
+        private alertMessageService: AlertMessageService) {
     }
 
     public userProfileGameAccounts: GameAccount[];
     public gamePlatforms: GamePlatform[];
-
-    public errorMessage: string = '';
-
+    
     public selectedGameAccount: GameAccount;
 
     public isAddingAccount: boolean;
@@ -35,14 +37,18 @@ export class GameAccountsCollectionComponent implements OnInit {
     public newGameAccount: GameAccount;
 
     private getGamePlatforms() {
-        this._gamePlatformService.getGamePlatforms().subscribe((gp: GamePlatform[]) => this.gamePlatforms = gp);
+        this._gamePlatformService.getGamePlatforms()
+            .subscribe(
+            (gp: GamePlatform[]) => this.gamePlatforms = gp,
+            error => this.alertMessageService.addMessage('error', <any>error)
+            );
     }
 
     private getGameAccounts() {
         this._gameAccountService.getGameAccounts(this.oidcManagerService.OidcManager.profile.sub)
             .subscribe(
             gameAccounts => this.userProfileGameAccounts = gameAccounts,
-            error => this.errorMessage = <any>error
+            error => this.alertMessageService.addMessage('error', <any>error)
             );
     }
 
@@ -50,7 +56,7 @@ export class GameAccountsCollectionComponent implements OnInit {
         this._gameAccountService.deleteAccount(this.oidcManagerService.OidcManager.profile.sub, gameAccount.id)
             .subscribe(
             data => { },
-            error => this.errorMessage = <any>error,
+            error => this.alertMessageService.addMessage('error', <any>error),
             () => this.getGameAccounts()
             );
     }
@@ -71,6 +77,10 @@ export class GameAccountsCollectionComponent implements OnInit {
 
     public removeGameAccount(gameAccount: GameAccount) {
         this.deleteGameAccount(gameAccount);
+    }
+
+    public viewFriendsAccounts(gameAccount: GameAccount) {
+        this.router.navigate(['/game-accounts/' + gameAccount.id.toString() + '/friends',]);
     }
 
     public addGameAccount() {

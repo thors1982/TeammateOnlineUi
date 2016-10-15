@@ -6,6 +6,7 @@ import { GravatarComponent } from '../gravatar.component';
 import { OidcManagerService } from '../oidc-manager.service';
 import { FriendService } from './friend.service';
 import { FriendRequestService } from './friend-request.service';
+import { AlertMessageService } from '../alert-message.service';
 
 import { Friend } from './friend';
 import { FriendRequest } from './friend-request';
@@ -20,7 +21,9 @@ export class FriendsCollectionComponent implements OnInit {
     constructor(
         public oidcManagerService: OidcManagerService,
         public router: Router,
-        private _friendService: FriendService, private _friendRequestService: FriendRequestService) {
+        private _friendService: FriendService,
+        private _friendRequestService: FriendRequestService,
+        private alertMessageService: AlertMessageService) {
     }
 
     public friends: Friend[];
@@ -35,7 +38,7 @@ export class FriendsCollectionComponent implements OnInit {
         this._friendService.getFriends(this.oidcManagerService.OidcManager.profile.sub)
             .subscribe(
             friends => this.friends = friends,
-            error => this.errorMessage = <any>error
+            error => this.alertMessageService.addMessage('error', <any>error)
             );
     }
 
@@ -43,7 +46,7 @@ export class FriendsCollectionComponent implements OnInit {
         this._friendRequestService.getFriendRequests(this.oidcManagerService.OidcManager.profile.sub)
             .subscribe(
             friendRequests => this.friendRequests = friendRequests,
-            error => this.errorMessage = <any>error
+            error => this.alertMessageService.addMessage('error', <any>error)
             );
     }
 
@@ -54,7 +57,7 @@ export class FriendsCollectionComponent implements OnInit {
         this._friendRequestService.updateFriendRequest(this.oidcManagerService.OidcManager.profile.sub, acceptFriendRequest)
             .subscribe(
             data => { },
-            error => this.errorMessage = <any>error,
+            error => this.alertMessageService.addMessage('error', <any>error),
             () => this.updateCollections()
             );
     }
@@ -63,7 +66,7 @@ export class FriendsCollectionComponent implements OnInit {
         this._friendRequestService.deleteFriendRequest(this.oidcManagerService.OidcManager.profile.sub, declineFriendRequest.id)
             .subscribe(
             data => { },
-            error => this.errorMessage = <any>error,
+            error => this.alertMessageService.addMessage('error', <any>error),
             () => this.updateCollections()
             );
     }

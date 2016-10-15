@@ -5,6 +5,7 @@ import { OidcManagerService } from '../oidc-manager.service';
 import { FriendService } from './friend.service';
 import { GamePlatformService } from '../game-platform.service';
 import { GameAccountService } from '../game-accounts/game-account.service';
+import { AlertMessageService } from '../alert-message.service';
 
 import { GameAccount } from '../game-accounts/game-account';
 import { GamePlatform } from '../game-platform';
@@ -22,32 +23,35 @@ export class FriendGameAccountsCollectionComponent implements OnInit {
         private _activatedRoute: ActivatedRoute,
         private _friendService: FriendService,
         private _gamePlatformService: GamePlatformService,
-        private _gameAccountService: GameAccountService) {
+        private _gameAccountService: GameAccountService,
+        private alertMessageService: AlertMessageService) {
     }
 
     public friend: Friend;
 
     public friendsGameAccounts: GameAccount[];
     public gamePlatforms: GamePlatform[];
-
-    public errorMessage: string = '';
-
+    
     private getFriend(friendId: number) {
         this._friendService.getFriend(this.oidcManagerService.OidcManager.profile.sub, friendId)
             .subscribe(f => this.friend = f,
-            error => this.errorMessage = <any>error,
+            error => this.alertMessageService.addMessage('error', <any>error),
             () => this.getGameAccounts());
     }
 
     private getGamePlatforms() {
-        this._gamePlatformService.getGamePlatforms().subscribe((gp: GamePlatform[]) => this.gamePlatforms = gp);
+        this._gamePlatformService.getGamePlatforms()
+            .subscribe(
+            (gp: GamePlatform[]) => this.gamePlatforms = gp,
+            error => this.alertMessageService.addMessage('error', <any>error)
+            );
     }
 
     private getGameAccounts() {
         this._gameAccountService.getGameAccounts(this.friend.friendUserProfile.id)
             .subscribe(
             gameAccounts => this.friendsGameAccounts = gameAccounts,
-            error => this.errorMessage = <any>error
+            error => this.alertMessageService.addMessage('error', <any>error)
             );
     }
 

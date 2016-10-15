@@ -57,4 +57,18 @@
     </div>
 </nav>
 
+<div *ngIf="alertMessageService">
+    <div *ngIf="alertMessageService.messages">
+        <div *ngFor="let alertMessage of alertMessageService.messages">
+            <div class="alert alert-danger alert-dismissible" role="alert" *ngIf="alertMessageService.messages.length > 0">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                {{alertMessage.message}}
+            </div>
+        </div>
+    </div>
+</div>
+
 <router-outlet></router-outlet>
