@@ -8,10 +8,9 @@ import { FriendService } from '../friends/friend.service';
 import { FriendsAccountsService } from './friends-accounts.service';
 import { AlertMessageService } from '../alert-message.service';
 
-import { GravatarComponent } from '../gravatar.component';
-
 import { GameAccount } from './game-account';
 import { GamePlatform } from '../game-platform';
+import { Friend } from '../friends/friend';
 
 @Component({
     templateUrl: 'friends-accounts.html',
@@ -22,7 +21,7 @@ import { GamePlatform } from '../game-platform';
 export class FriendsAccountsComponent implements OnInit {
     public gameAccount: GameAccount;
     public gamePlatforms: GamePlatform[];
-    public friends: Friends[];
+    public friends: Friend[];
     public friendsAccounts: GameAccount[];
 
     constructor(
@@ -47,7 +46,7 @@ export class FriendsAccountsComponent implements OnInit {
     private getGameAccount() {
         this._activatedRoute.params.subscribe(params => {
             let id = Number.parseInt(params['id']);
-            
+
             this._gameAccountService.getAccount(this.oidcManagerService.OidcManager.profile.sub, id)
                 .subscribe(
                 gameAccount => this.gameAccount = gameAccount,
