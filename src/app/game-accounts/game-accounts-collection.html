@@ -1,0 +1,36 @@
+<h2>Game accounts</h2>
+
+<md-card>
+  <md-card-title>Add new account</md-card-title>
+  <md-card-content>
+    <div *ngIf="isAddingAccount">
+      <add-game-account-form (getGameAccounts)="getGameAccounts($event)"></add-game-account-form>
+    </div>
+    <p *ngIf="!isAddingAccount">
+      <button md-button (click)="addGameAccount()">Add new account</button>
+    </p>
+  </md-card-content>
+</md-card>
+
+<md-card *ngFor="let gameAccount of userProfileGameAccounts" [class.selected]="gameAccount === selectedGameAccount">
+  <div *ngFor="let gamePlatform of gamePlatforms">
+    <div *ngIf="gamePlatform.id == gameAccount.gamePlatformId">
+      <md-card-title>{{gamePlatform.name}}</md-card-title>
+
+      <div *ngIf="!selectedGameAccount || gameAccount.id != selectedGameAccount.id">
+        <md-card-subtitle>{{gameAccount.userName}}</md-card-subtitle>
+        <md-card-actions>
+          <button md-button (click)="viewFriendsAccounts(gameAccount)">Details</button>
+          <button md-button (click)="selectGameAccount(gameAccount)">Edit</button>
+          <button md-button (click)="removeGameAccount(gameAccount)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+        </md-card-actions>
+      </div>
+
+      <div *ngIf="selectedGameAccount">
+        <div *ngIf="gameAccount.id == selectedGameAccount.id">
+          <game-account [gameAccount]="gameAccount" (clearSelectedGameAccount)="clearSelectedGameAccount($event)"></game-account>
+        </div>
+      </div>
+    </div>
+  </div>
+</md-card>

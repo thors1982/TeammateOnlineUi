@@ -1,0 +1,42 @@
+<h2>Friends</h2>
+
+<div *ngIf="friends != 0">
+  <md-card *ngFor="let friend of friends">
+    <md-card-header>
+      <gravatar [email]="friend.friendUserProfile.emailAddress" [size]="40" tag="md-card-avatar"></gravatar>
+      <div class="md-card-header-text">
+        <md-card-title>{{friend.friendUserProfile.firstName}} {{friend.friendUserProfile.lastName}}</md-card-title>
+        <md-card-subtitle>{{friend.friendUserProfile.emailAddress}}</md-card-subtitle>
+      </div>
+    </md-card-header>
+    <md-card-content>
+      <p></p>
+    </md-card-content>
+    <md-card-actions>
+      <button md-button (click)="viewFriendDetail(friend.id)">Details</button>
+    </md-card-actions>
+  </md-card>
+</div>
+<div *ngIf="friends == 0">
+  No friends
+</div>
+
+<div *ngIf="friendRequests != 0">
+  <h2>Friend requests pending</h2>
+  <md-card *ngFor="let friendRequest of friendRequests">
+    <md-card-header>
+      <gravatar [email]="friendRequest.friendUserProfile.emailAddress" [size]="40" tag="md-card-avatar"></gravatar>
+      <div class="md-card-header-text">
+        <md-card-title>{{friendRequest.friendUserProfile.firstName}} {{friendRequest.friendUserProfile.lastName}}</md-card-title>
+        <md-card-subtitle>{{friendRequest.friendUserProfile.emailAddress}}</md-card-subtitle>
+      </div>
+    </md-card-header>
+    <md-card-content *ngIf="!friendRequest.isIncomingRequest">
+      <p>Waiting for a response... <button md-button (click)="declineFriendRequestSave(friendRequest)">Cancel</button>
+    </md-card-content>
+    <md-card-actions *ngIf="friendRequest.isIncomingRequest">
+      <button md-button (click)="acceptFriendRequestSave(friendRequest)">Accept</button>
+      <button md-button (click)="declineFriendRequestSave(friendRequest)">Decline</button>
+    </md-card-actions>
+  </md-card>
+</div>

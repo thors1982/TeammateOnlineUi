@@ -1,0 +1,52 @@
+<md-card>
+  <md-card-content>
+    <form (ngSubmit)="searchTextSave()" #userProfileForm="ngForm">
+      <div class="form-group">
+        <md-input placeholder="Find a friend" id="searchText" name="searchText" required [(ngModel)]="searchText"></md-input>
+      </div>
+
+      <button md-raised-button color="primary" type="submit" [disabled]="!searchForm.form.valid">Submit</button>
+    </form>
+  </md-card-content>
+</md-card>
+
+<div *ngIf="completedSearch">
+  <md-list *ngIf="completedSearch.userProfiles != 0">
+    <md-list-item *ngFor="let userProfile of completedSearch.userProfiles">
+      <gravatar [email]="userProfile.emailAddress" [size]="40" tag="md-list-avatar"></gravatar>
+      <div class="md-list-text">
+        <h3 md-line>{{userProfile.firstName}} {{userProfile.lastName}}</h3>
+        <div md-line>
+          {{userProfile.emailAddress}}
+        </div>
+      </div>
+      <button md-fab color="primary" (click)="addFriendRequestSave(userProfile.id)">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </button>
+    </md-list-item>
+  </md-list>
+  <md-list *ngIf="completedSearch.gameAccounts != 0">
+    <md-list-item *ngFor="let gameAccount of completedSearch.gameAccounts">
+      <div class="md-list-text">
+        <h3 md-line>{{gameAccount.userName}}</h3>
+        <div md-line>
+          <div *ngIf="gamePlatforms != 0">
+            <div *ngFor="let gamePlatform of gamePlatforms">
+              <div *ngIf="gamePlatform.id == gameAccount.gamePlatformId">
+                {{gamePlatform.name}}<br />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button md-fab color="primary" (click)="addFriendRequestSave(gameAccount.userProfileId)">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </button>
+    </md-list-item>
+  </md-list>
+  <div *ngIf="completedSearch.userProfiles == 0 && completedSearch.gameAccounts == 0">
+    <div class="col-md-12">
+      No results found
+    </div>
+  </div>
+</div>

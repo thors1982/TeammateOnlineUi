@@ -1,0 +1,17 @@
+<form (ngSubmit)="addAccountSave()" #addGameAccountForm="ngForm">
+  <md-card-subtitle>Add new account</md-card-subtitle>
+
+  <div>
+    <!-- Todo replace dropdown with material design once its done -->
+    <label for="GamePlatform">Game platform: </label>
+    <select class="form-control" id="gamePlatformId" name="gamePlatformId" required [(ngModel)]="gameAccount.gamePlatformId">
+      <option *ngFor="let gamePlatform of gamePlatforms" value="{{gamePlatform.id}}">{{gamePlatform.name}}</option>
+    </select>
+    <!-- End Todo replace dropdown with material design once its done -->
+  </div>
+  <div>
+    <md-input placeholder="User name" id="userName" name="userName" required [(ngModel)]="gameAccount.userName"></md-input>
+  </div>
+
+  <button md-raised-button type="submit" [disabled]="!addGameAccountForm.form.valid">Submit</button>
+</form>
