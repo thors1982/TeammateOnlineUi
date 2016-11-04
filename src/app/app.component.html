@@ -1,0 +1,72 @@
+<md-sidenav-layout>
+  <md-toolbar>
+    Teammate Online
+    &nbsp;&nbsp;&nbsp;
+
+    <a routerLink="/dashboard">
+      <button md-button>Dashboard</button>
+    </a>
+
+    <a routerLink="/friends" *ngIf="oidcManagerService.isLoggedIn()">
+      <button md-button>Friends</button>
+    </a>
+
+    <a routerLink="/game-accounts" *ngIf="oidcManagerService.isLoggedIn()">
+      <button md-button>Game accounts</button>
+    </a>
+
+    <a routerLink="/user-profile" *ngIf="oidcManagerService.isLoggedIn()">
+      <button md-button>Profile</button>
+    </a>
+
+    <form role="search" (ngSubmit)="globalSearchSave()" #globalSearchForm="ngForm">
+      <md-input #nameInput placeholder="Search" id="globalSearchText" name="globalSearchText" [(ngModel)]="globalSearchText"></md-input>
+      <button md-button type="submit">Submit</button>
+    </form>
+
+    <span class="app-toolbar-filler"></span>
+
+    <div *ngIf="oidcManagerService.isLoggedIn()">
+      <button md-button [md-menu-trigger-for]="menu">
+        <i class="fa fa-user" aria-hidden="true"></i>
+      </button>
+      <md-menu x-position="before" #menu="mdMenu">
+        <button md-menu-item>
+          <a routerLink="/user-profile" routerLinkActive="active">Profile</a>
+        </button>
+        <button md-menu-item>
+          <a [routerLink]="['/auth/logout']">Sign out</a>
+        </button>
+      </md-menu>
+    </div>
+    <div *ngIf="!oidcManagerService.isLoggedIn()">
+      <button md-button [md-menu-trigger-for]="menu">
+        Sign in <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </button>
+      <md-menu x-position="before" #menu="mdMenu">
+        <button md-menu-item>
+          <a [routerLink]="['/auth/google-login']">Sign in with Google</a>
+        </button>
+        <button md-menu-item>
+          <a [routerLink]="['/auth/facebook-login']">Sign in with Facebook</a>
+        </button>
+      </md-menu>
+    </div>
+  </md-toolbar>
+</md-sidenav-layout>
+
+<div *ngIf="alertMessageService">
+  <div *ngIf="alertMessageService.messages">
+    <div *ngFor="let alertMessage of alertMessageService.messages">
+      <div class="alert alert-danger alert-dismissible" role="alert" *ngIf="alertMessageService.messages.length > 0">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+        {{alertMessage.message}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

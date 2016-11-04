@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+
+/*@import '~@angular/material/core/theming/prebuilt/purple-green.css';*/
+/*@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';*/
+@import '~@angular/material/core/theming/prebuilt/indigo-pink.css';
+/*@import '~@angular/material/core/theming/prebuilt/pink-bluegrey.css';*/
+@import '~font-awesome/css/font-awesome.min.css';
+
+.app-toolbar-filler {
+  flex: 1 1 auto;
+}
+
+
+/*Navigation */
+.md-toolbar-layout a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+.md-menu {
+  /*background-color: #212121;*/
+  background-color: whitesmoke;
+}
+
+.md-menu a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+md-card {
+  margin: 0 16px 16px 0;
+}

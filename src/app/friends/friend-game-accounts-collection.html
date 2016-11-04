@@ -1,0 +1,14 @@
+<div *ngIf="friend">
+  <h1>{{friend.friendUserProfile.firstName}} {{friend.friendUserProfile.lastName}}</h1>
+</div>
+
+<h2>Game accounts</h2>
+
+<md-card *ngFor="let gameAccount of friendsGameAccounts">
+  <div *ngFor="let gamePlatform of gamePlatforms">
+    <div *ngIf="gamePlatform.id == gameAccount.gamePlatformId">
+      <md-card-title>{{gamePlatform.name}}</md-card-title>
+      <md-card-subtitle>{{gameAccount.userName}}</md-card-subtitle>
+    </div>
+  </div>
+</md-card>

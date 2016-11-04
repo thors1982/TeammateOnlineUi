@@ -1,0 +1,31 @@
+<h2>
+  <span *ngIf="gameAccount">
+    <span *ngFor="let gamePlatform of gamePlatforms">
+      <span *ngIf="gamePlatform.id == gameAccount.gamePlatformId">
+        {{gamePlatform.name}} friends
+      </span>
+    </span>
+  </span>
+</h2>
+
+<md-list *ngIf="friendsAccounts != 0 && friends != 0">
+  <div *ngFor="let account of friendsAccounts">
+    <div *ngFor="let friend of friends">
+      <div *ngIf="friend.friendUserProfileId == account.userProfileId">
+        <md-list-item>
+          <gravatar [email]="friend.friendUserProfile.emailAddress" [size]="40" tag="md-list-avatar"></gravatar>
+          <div class="md-list-text">
+            <h3 md-line>
+              <a class="btn btn-default" role="button" (click)="viewFriendDetail(friend.id)">
+                {{friend.friendUserProfile.firstName}} {{friend.friendUserProfile.lastName}}
+              </a>
+            </h3>
+            <p md-line>
+              {{account.userName}}
+            </p>
+          </div>
+        </md-list-item>
+      </div>
+    </div>
+  </div>
+</md-list>
