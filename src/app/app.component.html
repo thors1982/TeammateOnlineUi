@@ -27,12 +27,12 @@
     <span class="app-toolbar-filler"></span>
 
     <div *ngIf="oidcManagerService.isLoggedIn()">
-      <button md-button [md-menu-trigger-for]="menu">
-        <i class="fa fa-user" aria-hidden="true"></i>
+      <button md-icon-button [md-menu-trigger-for]="menu">
+        <md-icon>account_circle</md-icon>
       </button>
       <md-menu x-position="before" #menu="mdMenu">
         <button md-menu-item>
-          <a routerLink="/user-profile" routerLinkActive="active">Profile</a>
+          <a routerLink="/user-profile">Profile</a>
         </button>
         <button md-menu-item>
           <a [routerLink]="['/auth/logout']">Sign out</a>
@@ -40,8 +40,8 @@
       </md-menu>
     </div>
     <div *ngIf="!oidcManagerService.isLoggedIn()">
-      <button md-button [md-menu-trigger-for]="menu">
-        Sign in <i class="fa fa-caret-down" aria-hidden="true"></i>
+      <button md-icon-button [md-menu-trigger-for]="menu">
+        Sign in <md-icon>keyboard_arrow_down</md-icon>
       </button>
       <md-menu x-position="before" #menu="mdMenu">
         <button md-menu-item>
@@ -62,7 +62,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+        <md-icon>warning</md-icon>
         {{alertMessage.message}}
       </div>
     </div>

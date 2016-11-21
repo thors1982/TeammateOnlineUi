@@ -17,12 +17,12 @@
   text-decoration: none;
 }
 
-.md-menu {
+.md-menu-content {
   /*background-color: #212121;*/
   background-color: whitesmoke;
 }
 
-.md-menu a {
+[md-menu-item] a {
   color: currentColor;
   text-decoration: none;
 }
