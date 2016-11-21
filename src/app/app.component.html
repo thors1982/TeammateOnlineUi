@@ -40,8 +40,8 @@
       </md-menu>
     </div>
     <div *ngIf="!oidcManagerService.isLoggedIn()">
-      <button md-icon-button [md-menu-trigger-for]="menu">
-        Sign in <md-icon>keyboard_arrow_down</md-icon>
+      <button md-button [md-menu-trigger-for]="menu">
+        Sign in <md-icon style="vertical-align:middle;">keyboard_arrow_down</md-icon>
       </button>
       <md-menu x-position="before" #menu="mdMenu">
         <button md-menu-item>
